@@ -2,10 +2,10 @@ import Image from "next/image"
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background to-muted/30">
+    <div className="h-full bg-gradient-to-r from-[#141E30] to-[#243B55]">
       {/* Header Section */}
       <header className="container mx-auto pt-8 pb-4 text-center">
-        <h1 className="text-2xl font-bold text-primary md:text-3xl lg:text-4xl">
+        <h1 className="text-2xl font-bold text-white md:text-3xl lg:text-4xl">
           माता शाकम्भरी देवी, माँ भीमा देवी, भ्रामरी देवी और माता शताक्षी
         </h1>
       </header>
@@ -28,7 +28,7 @@ export default function Home() {
         </div>
 
         {/* Text Content */}
-        <div className="mx-auto max-w-3xl space-y-4 pb-12 text-justify">
+        <div className="mx-auto max-w-3xl space-y-4 pb-12 text-justify text-white">
           <p className="text-base leading-relaxed md:text-lg">
             ये मंदिर शक्तिपीठ है और यहां सती का शीश यानि सिर गिरा था । मंदिर में अंदर मुख्य प्रतिमा शाकुंभरी देवी के दाईं ओर भीमा और
             भ्रामरी और बायीं ओर शताक्षी देवी प्रतिष्ठित हैं । शताक्षी देवी को शीतला देवी के नाम से भी संबोधित किया जाता है ।

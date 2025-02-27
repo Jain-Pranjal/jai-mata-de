@@ -63,7 +63,7 @@ export function Navbar() {
               {route.label}
             </Link>
           ))}
-          <Button size="sm">Contact Us</Button>
+            <Button size="sm" className="cursor-pointer" onClick={() => window.location.href = '/contactus'}>Contact Us</Button>
         </div>
 
         {/* Mobile Navigation */}

@@ -15,6 +15,7 @@ export default function Home() {
         {/* Image Section - Centered */}
         <div className="relative mx-auto my-8 flex justify-center">
             <div className="relative w-full max-w-3xl overflow-hidden rounded-lg shadow-xl">
+            <div className="transform transition-transform duration-300 hover:scale-105">
             <Image
               src="/home.png"
               alt="जय माता दी"
@@ -24,6 +25,7 @@ export default function Home() {
               priority
               className="object-contain w-full h-auto"
             />
+            </div>
             </div>
         </div>
 

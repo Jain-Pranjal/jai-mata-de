@@ -1,5 +1,5 @@
-import Image from "next/image"
-import { Flower } from "lucide-react"
+import Image from "next/image";
+import { Flower } from "lucide-react";
 
 const AartiPage = () => {
   return (
@@ -7,16 +7,19 @@ const AartiPage = () => {
       <div className="container mx-auto px-4 py-8">
         {/* Main content wrapper */}
         <div className="flex flex-col items-center gap-8 lg:flex-row lg:items-start lg:justify-between">
+
           {/* Text content - Left side */}
           <div className="w-full lg:w-1/2">
             <header className="text-center lg:text-left">
-              <h1 className="mb-4 bg-gradient-to-r from-amber-200 to-yellow-400 bg-clip-text text-3xl font-bold text-transparent md:text-4xl lg:text-5xl">
+              <h1 className="mb-4 bg-gradient-to-r from-amber-200 to-yellow-400 bg-clip-text text-3xl font-bold text-transparent md:text-4xl lg:text-5xl leading-normal break-words whitespace-normal">
                 माता शाकम्भरी देवी, माँ भीमा देवी, भ्रामरी देवी और माता शताक्षी
               </h1>
 
               <div className="flex items-center justify-center gap-3 lg:justify-start">
                 <Flower className="h-5 w-5 text-yellow-400" />
-                <h2 className="text-xl font-semibold text-yellow-400 md:text-2xl">।। जय माँ शाकम्भरी देवी ।।</h2>
+                <h2 className="text-xl font-semibold text-yellow-400 md:text-2xl">
+                  ।। जय माँ शाकम्भरी देवी ।।
+                </h2>
                 <Flower className="h-5 w-5 text-yellow-400" />
               </div>
             </header>
@@ -25,23 +28,30 @@ const AartiPage = () => {
             <div className="mt-8 space-y-6 rounded-xl bg-white/5 p-6 text-center backdrop-blur-sm lg:text-left">
               <div className="text-lg font-medium text-yellow-100"></div>
 
-              <div className="space-y-4 text-gray-200">
+              <div className="space-y-4 text-gray-200 text-base lg:text-xl">
                 <p>
-                हरि ॐ श्री शाकुम्भरी अम्बाजी की आरती कीजो
+                  हरि ॐ श्री शाकुम्भरी अम्बाजी की आरती कीजो
                   <br />
                   ऐसी अद्भुत रूप हृदय धर लीजो
                 </p>
 
                 <p>
-                शताक्षी दयालु की आरती कीजो
+                  शताक्षी दयालु की आरती कीजो
                   <br />
-                  तुम परिपूर्ण आदि भवानी मां, सब घट तुम आप बखानी मां</p>
+                  तुम परिपूर्ण आदि भवानी मां, सब घट तुम आप बखानी मां
+                </p>
                 <p>
+                  शाकुम्भरी अम्बाजी की आरती कीजो
+                  <br />
                   तुम्हीं हो शाकुम्भर, तुम ही हो सताक्षी मां
                   <br />
+                </p>
+
+                <p>
                   शिवमूर्ति माया प्रकाशी मां,
                   <br />
                   शाकुम्भरी अम्बाजी की आरती कीजो
+                  <br />
                 </p>
 
                 <p>
@@ -49,15 +59,18 @@ const AartiPage = () => {
                   <br />
                   इच्छा पूर्ण कीजो, शाकुम्भर दर्शन पावे मां
                   <br />
-                  शाकुम्भरी अम्बाजी की आरती कीजो
                 </p>
-
                 <p>
+                  शाकुम्भरी अम्बाजी की आरती कीजो
+                  <br />
                   जो नर आरती पढ़े पढ़ावे मां, जो नर आरती सुनावे मां
                   <br />
+                </p>
+                <p>
                   बस बैकुंठ शाकुम्भर दर्शन पावे
                   <br />
                   शाकुम्भरी अंबाजी की आरती कीजो।
+                  <br />
                 </p>
               </div>
             </div>
@@ -77,16 +90,11 @@ const AartiPage = () => {
                 />
               </div>
             </div>
-
-            {/* Decorative elements */}
-            <div className="absolute -left-4 -top-4 h-24 w-24 rounded-full bg-yellow-400/10 blur-2xl" />
-            <div className="absolute -bottom-4 -right-4 h-24 w-24 rounded-full bg-yellow-400/10 blur-2xl" />
           </div>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default AartiPage
-
+export default AartiPage;

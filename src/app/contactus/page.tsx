@@ -17,7 +17,7 @@ const TimingCard = () => {
         <div className="bg-white rounded-lg shadow-md p-8">
             <h2 className="text-2xl font-bold text-center mb-6">Opening Hours</h2>
             <div className="space-y-4">
-                {timings.map((timing, index) => (
+                {timings.map((timing) => (
                     <div key={timing.day} className={`flex justify-between items-center ${
                         timing.hours === 'Closed' ? 'text-red-500' : 'text-gray-700'
                     }`}>

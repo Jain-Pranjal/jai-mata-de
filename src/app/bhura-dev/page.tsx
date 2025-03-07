@@ -104,11 +104,11 @@ const BhuraDevPage = () => {
             {/* Temple description - English */}
             <div className="mt-8 space-y-6 rounded-xl bg-white/5 p-6 text-gray-200 text-base lg:text-xl backdrop-blur-sm">
               <p>
-                Before Mata's darshan, belief is to visit Bhura the deity first. In the book Sri Durgasaptashti, there is a description of Shakumbhari Devi that when there was a war going on between the gods and Demons, in which big demons were fighting on behalf of Demons or Danavas, Shumbh, Nishumbha, Mahishasura etc. then the gods fought with them hiding in the hills of Shivalik.
+                Before Mata&apos;s darshan, belief is to visit Bhura the deity first. In the book Sri Durgasaptashti, there is a description of Shakumbhari Devi that when there was a war going on between the gods and Demons, in which big demons were fighting on behalf of Demons or Danavas, Shumbh, Nishumbha, Mahishasura etc. then the gods fought with them hiding in the hills of Shivalik.
               </p>
 
               <p>
-                They started wandering and when things did not happen, they asked for help from the Mother Goddess at the behest of Narada Muni. Meanwhile, Bhuradev, along with his five companions, came to the mother's shelter and asked for permission to fight with the gods. Mother gave boon and war started.
+                They started wandering and when things did not happen, they asked for help from the Mother Goddess at the behest of Narada Muni. Meanwhile, Bhuradev, along with his five companions, came to the mother&apos;s shelter and asked for permission to fight with the gods. Mother gave boon and war started.
               </p>
 
               <p>
@@ -116,7 +116,7 @@ const BhuraDevPage = () => {
               </p>
 
               <p>
-                In the meantime Shumbha and Nishumbha killed Bhuradev's arrow which caused him to fall. After the war ended, Mother asked Bhuradev to come alive and ask for a boon, then he always asked for the service of the feet of the mother, on which Mother gave a boon that whoever visits me, must first see Bhuradev, then only my journey will be completed.
+                In the meantime Shumbha and Nishumbha killed Bhuradev&apos;s arrow which caused him to fall. After the war ended, Mother asked Bhuradev to come alive and ask for a boon, then he always asked for the service of the feet of the mother, on which Mother gave a boon that whoever visits me, must first see Bhuradev, then only my journey will be completed.
               </p>
 
               <p>

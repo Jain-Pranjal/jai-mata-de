@@ -26,20 +26,22 @@ const AartiPage = () => {
 
             {/* Aarti verses */}
             <div className="mt-8 space-y-6 rounded-xl bg-white/5 p-6 text-center backdrop-blur-sm lg:text-left">
-              <div className="text-lg font-medium text-yellow-100"></div>
+              <div className="text-lg font-medium text-yellow-100">
+              आरती माँ शाकम्भरी देवी जी की
+              </div>
 
               <div className="space-y-4 text-gray-200 text-base lg:text-xl">
-                <p>
-                  हरि ॐ श्री शाकुम्भरी अम्बाजी की आरती कीजो
-                  <br />
-                  ऐसी अद्भुत रूप हृदय धर लीजो
-                </p>
+              <p>
+                हरि ॐ श्री शाकुम्भरी अम्बाजी की आरती कीजो
+                <br />
+                ऐसी अद्भुत रूप हृदय धर लीजो
+              </p>
 
-                <p>
-                  शताक्षी दयालु की आरती कीजो
-                  <br />
-                  तुम परिपूर्ण आदि भवानी मां, सब घट तुम आप बखानी मां
-                </p>
+              <p>
+                शताक्षी दयालु की आरती कीजो
+                <br />
+                तुम परिपूर्ण आदि भवानी मां, सब घट तुम आप बखानी मां
+              </p>
                 <p>
                   शाकुम्भरी अम्बाजी की आरती कीजो
                   <br />

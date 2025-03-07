@@ -13,8 +13,8 @@ const routes = [
     label: "Home",
   },
   {
-    href: "/aarti",
-    label: "Aarti",
+    href: "/shri-shakumbhari-devi",
+    label: "Shri Shakumbhari Devi",
   },
   {
     href: "/bhura-dev",
@@ -29,8 +29,13 @@ const routes = [
     label: "Mela",
   },
   {
-    href: "/shri-shakumbhari-devi",
-    label: "Shri Shakumbhari Devi",
+    href: "/mata-stories",
+    label: "Mata Stories",
+
+  },
+  {
+    href: "/aarti",
+    label: "Aarti",
   },
   {
     href: "/navigation",

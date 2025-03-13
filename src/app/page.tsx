@@ -1,8 +1,14 @@
+
 import Image from "next/image"
+import LanguagePopup from "@/components/LanguagePopup"
+
 
 export default function Home() {
   return (
     <div className="h-full bg-gradient-to-r from-[#141E30] to-[#243B55]">
+      {/* Language Popup */}
+      <LanguagePopup />
+
       {/* Header Section */}
       <header className="container mx-auto pt-8 pb-4 text-center">
         <h1 className="text-2xl font-bold text-white md:text-3xl lg:text-4xl">

@@ -12,9 +12,7 @@ export default function LanguagePopup() {
   const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() => {
-    console.log("Selected Language from Zustand:", selectedLanguage); // Debugging
     if (!selectedLanguage) {
-      console.log("No language set, showing popup...");
       setTimeout(() => setShowPopup(true), 500);
     }
   }, [selectedLanguage]);
@@ -28,21 +26,49 @@ export default function LanguagePopup() {
   return (
     <AnimatePresence>
       {showPopup && (
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 flex items-center justify-center bg-black/50 backdrop-blur-sm z-50 p-4">
-          <motion.div initial={{ scale: 0.9, y: 20 }} animate={{ scale: 1, y: 0 }} transition={{ type: "spring", damping: 25, stiffness: 300 }} className="bg-white dark:bg-gray-900 p-6 md:p-8 rounded-xl shadow-2xl max-w-md w-full">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 flex items-center justify-center bg-black/50 backdrop-blur-sm z-50 p-4"
+        >
+          <motion.div
+            initial={{ scale: 0.9, y: 20 }}
+            animate={{ scale: 1, y: 0 }}
+            transition={{ type: "spring", damping: 25, stiffness: 300 }}
+            className="bg-white dark:bg-gray-900 p-6 md:p-8 rounded-xl shadow-2xl max-w-md w-full"
+          >
             <div className="flex flex-col items-center text-center">
               <Image src="/om.jpg" alt="Translate" width={32} height={32} className="mb-4" />
               <h2 className="text-xl md:text-2xl font-bold mb-2">Welcome! Choose Your Language</h2>
-              <p className="text-muted-foreground mb-6">Select your preferred language to enhance your browsing experience</p>
+              <p className="text-muted-foreground mb-6">
+                Select your preferred language to enhance your browsing experience
+              </p>
 
               <div className="w-full space-y-6">
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                  {["english", "hindi", "kannada", "tamil"].map((lang) => (
-                    <LanguageOption key={lang} value={lang} label={lang.charAt(0).toUpperCase() + lang.slice(1)} selected={selectedLanguage === lang} onSelect={setLanguage} />
+                  {[
+                    { value: "english", label: "English" },
+                    { value: "hindi", label: "Hindi" },
+                    { value: "tamil", label: "Tamil" },
+                    { value: "telugu", label: "Telugu" },
+                  ].map((lang) => (
+                    <LanguageOption
+                      key={lang.value}
+                      value={lang.value}
+                      label={lang.label}
+                      selected={selectedLanguage === lang.value}
+                      onSelect={setLanguage}
+                    />
                   ))}
                 </div>
 
-                <Button onClick={confirmLanguage} disabled={!selectedLanguage} className="w-full" size="lg">
+                <Button
+                  onClick={confirmLanguage}
+                  disabled={!selectedLanguage}
+                  className="w-full"
+                  size="lg"
+                >
                   Continue
                 </Button>
               </div>
@@ -67,7 +93,9 @@ function LanguageOption({ value, label, selected, onSelect }: LanguageOptionProp
       type="button"
       onClick={() => onSelect(value)}
       className={`relative flex flex-col items-center justify-center p-4 rounded-lg border-2 transition-all duration-200 ${
-        selected ? "border-primary bg-primary/5 text-primary" : "border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600"
+        selected
+          ? "border-primary bg-primary/5 text-primary"
+          : "border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600"
       }`}
     >
       {selected && (

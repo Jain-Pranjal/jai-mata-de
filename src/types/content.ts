@@ -8,3 +8,10 @@ export interface Content {
     showFullEnglish: boolean;
     toggleEnglish: () => void;
   }
+
+
+  export type Language = "english" | "hindi" | "tamil" | "telugu"; 
+  export interface contentStyling {
+  title: string;
+  paragraphs: string[];
+}

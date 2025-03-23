@@ -15,3 +15,31 @@ export interface Content {
   title: string;
   paragraphs: string[];
 }
+
+export interface NavigationContent {
+  title: string;
+  byAir: {
+    heading: string;
+    description: string;
+  };
+  byTrain: {
+    heading: string;
+    nearestStation: string;
+    fromDelhi: {
+      heading: string;
+      details: string[];
+    };
+    toDelhi: {
+      heading: string;
+      details: string[];
+    };
+  };
+  byRoad: {
+    heading: string;
+    description: string;
+    routes: string[];
+  };
+  locationMap: {
+    heading: string;
+  };
+}

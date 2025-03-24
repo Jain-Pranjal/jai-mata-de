@@ -43,3 +43,10 @@ export interface NavigationContent {
     heading: string;
   };
 }
+
+export interface MelaContent {
+  title: string;
+  subtitle: string;
+  paragraphs: string[];
+  imageAlt: string;
+}

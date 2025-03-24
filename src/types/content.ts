@@ -50,3 +50,10 @@ export interface MelaContent {
   paragraphs: string[];
   imageAlt: string;
 }
+
+export interface BhuraDevContent {
+  title: string;
+  subtitle: string;
+  paragraphs: string[];
+}
+

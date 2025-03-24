@@ -48,7 +48,7 @@ export default function Home() {
         </div>
 
         {/* Text Content */}
-        <div className="mx-auto max-w-3xl space-y-4 pb-12 text-justify text-white">
+        <div className="mx-auto max-w-3xl space-y-4 pb-12 text-justify text-gray-200">
           {content.paragraphs.map((paragraph, index) => (
             <p key={index} className="text-base leading-relaxed md:text-lg">
               {paragraph}

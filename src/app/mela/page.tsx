@@ -4,11 +4,11 @@ import React from "react";
 import Image from "next/image";
 import { Flower } from "lucide-react";
 import { useLanguageStore } from "@/store/languageStore";
-import { melaContent } from "@/content/mela"; // Adjust the path as needed
+import { melaContent } from "@/content/mela"; 
 
 const MelaPage = () => {
   const { selectedLanguage } = useLanguageStore();
-  const displayLanguage = selectedLanguage || "english"; // Default to English
+  const displayLanguage = selectedLanguage || "english"; 
 
   // Fetch content based on the selected language, fallback to English
   const content = melaContent[displayLanguage as keyof typeof melaContent] || melaContent.english;

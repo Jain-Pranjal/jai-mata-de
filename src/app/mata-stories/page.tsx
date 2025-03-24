@@ -1,87 +1,61 @@
-import { Flower } from "lucide-react";
+"use client";
 
-const page = () => {
+import React from "react";
+import { Flower } from "lucide-react";
+import { useLanguageStore } from "@/store/languageStore";
+import { shriShakumbhariDeviContent } from "@/content/mata-stories"; 
+
+const ShriShakumbhariDeviPage = () => {
+  const { selectedLanguage } = useLanguageStore();
+  const displayLanguage = selectedLanguage || "english";
+  const content = shriShakumbhariDeviContent[displayLanguage as keyof typeof shriShakumbhariDeviContent] || shriShakumbhariDeviContent.english;
+
   return (
     <div className="min-h-screen bg-gradient-to-r from-[#141E30] to-[#243B55]">
       <div className="container mx-auto px-4 py-8">
         <div className="w-full">
+          {/* Header Section */}
           <header className="text-center">
             <h1 className="mb-4 bg-gradient-to-r from-amber-200 to-yellow-400 bg-clip-text text-3xl font-bold text-transparent md:text-4xl lg:text-5xl leading-normal break-words whitespace-normal">
-              माता शाकम्भरी देवी, माँ भीमा देवी, भ्रामरी देवी और माता शताक्षी
+              {content.title}
             </h1>
-
             <div className="flex items-center justify-center gap-3">
               <Flower className="h-5 w-5 text-yellow-400" />
               <h2 className="text-xl font-semibold text-yellow-400 md:text-2xl">
-                ।। जय माँ शाकम्भरी देवी ।।
+                {content.subtitle}
               </h2>
               <Flower className="h-5 w-5 text-yellow-400" />
             </div>
           </header>
 
-          <div className="mt-8 space-y-6 rounded-xl bg-white/5 p-6 text-justify backdrop-blur-sm ">
-            <p className="text-base leading-relaxed text-gray-200 md:text-xl">
-            मां शाकंभरी की पौराणिक ग्रंथों में वर्णित कथा के अनुसार, एक समय जब पृथ्‍वी पर दुर्गम नामक दैत्य ने आतंक का माहौल पैदा किया। इस तरह करीब सौ वर्ष तक वर्षा न होने के कारण अन्न-जल के अभाव में भयंकर सूखा पड़ा, जिससे लोग मर रहे थे। जीवन खत्म हो रहा था। उस दैत्य ने ब्रह्माजी से चारों वेद चुरा लिए थे। तब आदिशक्ति मां दुर्गा का रूप मां शाकंभरी देवी में अवतरित हुई, जिनके सौ नेत्र थे। उन्होंने रोना शुरू किया, रोने पर आंसू निकले और इस तरह पूरी धरती में जल का प्रवाह हो गया। अंत में मां शाकंभरी दुर्गम दैत्य का अंत कर दिया।
-            </p>
-
-            <p className="text-base leading-relaxed text-gray-200 md:text-xl">
-            एक अन्य कथा के अनुसार शाकुम्भरा (शाकंभरी) देवी ने 100 वर्षों तक तप किया था और महीने के अंत में एक बार शाकाहारी भोजन कर तप किया था। ऐसी निर्जीव जगह जहां पर 100 वर्ष तक पानी भी नहीं था, वहां पर पेड़-पौधे उत्पन्न हो गए।
-            </p>
-            
-            <p className="text-base leading-relaxed text-gray-200 md:text-xl">
-            यहां पर साधु-संत माता का चमत्कार देखने के लिए आए और उन्हें शाकाहारी भोजन दिया गया। इसका तात्पर्य यह था कि माता केवल शाकाहारी भोजन का भोग ग्रहण करती हैं और इस घटना के बाद से माता का नाम &apos;शाकंभरी माता&apos; पड़ा।
-            </p>
+          {/* Main Paragraphs */}
+          <div className="mt-8 space-y-6 rounded-xl bg-white/5 p-6 text-justify backdrop-blur-sm">
+            {content.paragraphs.map((paragraph, index) => (
+              <p
+                key={index}
+                className="text-base leading-relaxed text-gray-200 md:text-xl"
+              >
+                {paragraph}
+              </p>
+            ))}
           </div>
 
+          {/* Additional Information */}
           <div className="mt-8 space-y-6 rounded-xl bg-white/5 p-6 text-justify backdrop-blur-sm">
             <h3 className="text-2xl font-bold text-yellow-400 text-center mb-6">
-              Additional Information
+              {content.additionalInfo.title}
             </h3>
-            
             <div className="space-y-8">
-              <div>
-                <h4 className="text-xl font-semibold text-yellow-300 mb-2">
-                सकराय धाम माता
-
-
-                </h4>
-                <p className="text-base leading-relaxed text-gray-200 md:text-xl">
-                 सकराय धाम माता शाकम्भरी देवी के मुख्य तीन मंदिर है। माता का दुसरा प्रमुख मंदिर राजस्थान के सकराय गाँव मे अरावली की पर्वतमालाओं की शांत मालकेतु घाटी मे है। यहाँ पर माता के दर्शन ब्रह्माणी और रुद्राणी के रूप मे होते है। माता का यह मंदिर सीकर जिले मे स्थित है। उदयपुरवाटी से यह लगभग १६ किमी की दूरी पर स्थित है। कस्बे के शाकंभरी गेट से १५ किलोमीटर दूर अरावली की पहाडिय़ों के बीच सकरायपीठ माता शाकंभरी का प्राचीन मंदिर स्थित है। मां शाकंभरी के मंदिर की स्थापना सैकड़ों वर्ष पूर्व में हुई थी। माता के मंदिर में ब्रह्माणी व रूद्राणी के रूप में दो प्रतिमाएं विराजमान हैं।सिद्धपीठ होने से माता की ख्याति आज पूरे भारत में फैली हुई है। मंदिर के पुजारियों के अनुसार माता शाकंभरी के प्राचीन तीन मंदिर है। पहला प्राचीन मंदिर यहां सकराय में तो दूसरा उत्तर प्रदेश के सहारनपुर मे है और तीसरा राजस्थान के ही साम्भर मे है।माँ का यह पावन धाम अरावली की सुंदर पहाडियों की शांत मालकेतू घाटी मे है। प्रतिदिन सुबह साढ़े पांच बजे और शाम को पौने सात बजे माता की आरती होती है। नवरात्र में माता के दरबार में जगह जगह शतचंडी अनुष्ठानों का आयोजन होता है। जगदंबा के दरबार मे अब तक पूर्व राष्ट्रपति प्रतिभा सिंह पाटिल, पूर्व उप राष्ट्रपति भैरूसिंह शेखावत, मुख्यमंत्री वसुंधरा राजे, हिमाचल प्रदेश के मुख्यमंत्री वीरभद्र सिंह, सपा के अमरसिंह पहुंच चुके है। इनके अलावा फिल्म स्टार मनोज कुमार, अजय देवगन, काजोल, तनिशा सहित सैंकड़ों अति विशिष्टजन नवरात्र में मां शाकम्भरी के दरबार में दर्शन कर चुके है क्योंकि माँ की लीला अति विचित्र है। मैय्या के चमत्कारो को सुन हर कोई सकराय दौड़ा जाता है। मां शाकंभरी के जाने के लिए एकमात्र मार्ग उदयपुरवाटी से होकर गुजरता है। इसके अलावा जयपुर रोड से गौरिया के रास्ते से होते हुए भी मां शाकंभरी के दरबार में श्रद्धालु पहुंचते हैं लेकिन पहाडिय़ों के मध्य निकले इस रास्ते मे काफी खतरनाक मोड़ है। कहा जाता है कि यहाँ माँ शाकम्भरी अर्थात ब्रह्माणी को सात्विक और रूद्राणी को तामसिक भोजन परोसा जाता था। भोग के समय देवी की मूर्तियों के बीच पर्दा लगाया जाता था। एक दिन भूलवश माँ ब्रह्माणी अर्थात शाकम्भरी के भोग के थाल से रूद्राणी अर्थात काली का भोग थाल छू गया। तब माँ की मूर्ति का मुख तिरछी और हो गया। अतः इस मंदिर से तामसिक भोग की प्रथा बंद हुई और दोनों माताओं को सात्विक भोग दिया जाने लगा।<br/>
-                 माँ शाकम्भरी के भक्त सकराय धाम की यात्रा कर अपनी जीवन यात्रा धन्य बनाये
-
-
-                </p>
-              </div>
-              
-              <div>
-                <h4 className="text-xl font-semibold text-yellow-300 mb-2">
-                साम्भर धाम
-
-
-                </h4>
-                <p className="text-base leading-relaxed text-gray-200 md:text-xl">
-                माता का यह स्थान जयपुर जिले मे साम्भर कस्बे के पास साम्भर झील मे एक छोटी सी पहाड़ी पर है। चिलचिलाती धूप और रेगिस्तान की तपती रेत के बीच यह आध्यात्मिक स्थान है। माता का यह मंदिर पृथ्वीराज चौहान के समय बनाया गया था। उससे पहले यहाँ जंगल होता था और घाटी देवी की बनी कहलाती थी। राजस्थान की राजधानी जयपुर से करीब 100 किलोमीटर दूर सांभर कस्बे में स्थित मां शाकंभरी मंदिर करीब 2500 साल पुराना बताया जाता है। शाकंभरी को दुर्गा का अवतार माना जाता है। मंदिर में भादवा सुदी अष्टमी को मेला आयोजित होता है। दोनों ही नवरात्रों में माता के दर्शन करने के लिए दूर-दूर से भक्त आते हैं। दंत कथाओं और स्थानीय लोगों के मुताबिक मां शाकंभरी की कृपा से यहां चांदी की भूमि उत्पन्न हुई। चांदी के साथ ही यहां इस बात को लेकर झगड़े शुरू हो गए। जब समस्या ने विकट रूप ले लिा तो मां ने यहां बहुमूल्य सम्पदा और बेशकीमती चांदी को नमक में बदल दिया। इस तरह से सांभर झील की उत्पत्ति हुई। वर्तमान में करीब 90 वर्गमील में यहां नमक की झील है।
-
-इसके अलावा देवी के अन्य धाम शाकम्भरी धाम कटक शाकम्भरी धाम केदारहिल्स शाकम्भरी देवी हरिद्वार
-
-
-
-
-                </p>
-              </div>
-              
-              <div>
-                <h4 className="text-xl font-semibold text-yellow-300 mb-2">
-                माता का स्वरूप
-
-
-                </h4>
-                <p className="text-base leading-relaxed text-gray-200 md:text-xl">
-                माता शाकम्भरी देवी के स्वरूप का विस्तृत वर्णन श्री दुर्गा सप्तशती के अंत में मूर्ति रहस्य में मिलता है। इसके अनुसार शाकंभरी देवी नीलवर्णा है । नील कमल के समान उनके नेत्र हैं। गंभीर नाभि है। त्रिवल्ली से विभूषित सूक्ष्म उदर वाली है । यह माता कमल पर विराजमान हैं। उनके एक हाथ में कमल है जिन पर भंवरे गूंज रहे हैं ये परमेश्वरी अत्यंत तेजस्वी धनुष को धारण करती हैं। ये ही देवी शाकम्भरी है शताक्षी तथा दुर्गा नाम से भी यही कही जाती है। ये ही विशोका, दुष्टदमनी ,सती,चंडी,मां गौरी ,कालिका तथा विपत्तियों का विनाश करने वाली पार्वती है। जो मनुष्य शाकम्भरी का ध्यान जब पूजा स्तुति और नमस्कार करता है ।वह शीघ्र ही अन्न पान,फल और अमृत रूपी अक्षय फल पाता है।
-
-
-                </p>
-              </div>
+              {content.additionalInfo.sections.map((section, index) => (
+                <div key={index}>
+                  <h4 className="text-xl font-semibold text-yellow-300 mb-2">
+                    {section.heading}
+                  </h4>
+                  <p className="text-base leading-relaxed text-gray-200 md:text-xl">
+                    {section.description}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -90,4 +64,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default ShriShakumbhariDeviPage;

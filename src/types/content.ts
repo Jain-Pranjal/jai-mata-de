@@ -1,3 +1,4 @@
+import { execFileSync } from "child_process";
 
 export interface Content {
     index: number;
@@ -56,4 +57,22 @@ export interface BhuraDevContent {
   subtitle: string;
   paragraphs: string[];
 }
+
+
+export interface AdditionalInfo {
+  title: string;
+  sections: {
+    heading: string;
+    description: string;
+  }[];
+}
+
+export interface ShakumbhariDeviContent {
+  title: string;
+  subtitle: string;
+  paragraphs: string[];
+  additionalInfo: AdditionalInfo;
+}
+
+
 

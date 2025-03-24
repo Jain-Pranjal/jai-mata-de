@@ -104,3 +104,9 @@ export interface WinnerContent {
   }[];
 }
 
+export interface BannerContent {
+  message: string;
+  linkText: string;
+  linkUrl: string;
+}
+

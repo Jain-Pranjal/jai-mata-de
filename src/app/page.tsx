@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useLanguageStore } from "@/store/languageStore";
 import { homePageLangContent } from "@/content/homePage";
-
+import Banner from "@/components/Banner";
 export default function Home() {
   const { selectedLanguage } = useLanguageStore();
   const displayLanguage = selectedLanguage || "english"; // Default to English if no language is selected
@@ -13,6 +13,9 @@ export default function Home() {
 
   return (
     <div className="h-full bg-gradient-to-r from-[#141E30] to-[#243B55]">
+      {/* Banner Section */}
+      <Banner />
+      
       {/* Header Section */}
       <header className="container mx-auto pt-8 pb-4 text-center">
         <h1 className="text-2xl font-bold text-white md:text-3xl lg:text-4xl">
@@ -30,7 +33,7 @@ export default function Home() {
                 src="/home.png"
                 alt={
                   displayLanguage === "english"
-                    ? "Victory to the Mother Goddess"
+                    ? "Jai Mata Di"
                     : displayLanguage === "hindi"
                     ? "जय माता दी"
                     : displayLanguage === "tamil"

@@ -93,3 +93,14 @@ export interface ShakumbhariDeviContent {
   showLessText: string;
 }
 
+export interface WinnerContent {
+  title: string;
+  subtitle: string;
+  winners: {
+    position: string;
+    name: string;
+    videoUrl: string;
+    trophy: string;
+  }[];
+}
+

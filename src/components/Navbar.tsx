@@ -18,6 +18,7 @@ const routes = [
   { href: "/mata-stories", label: "Mata Stories" },
   { href: "/aarti", label: "Aarti" },
   { href: "/navigation", label: "Navigation" },
+  { href: "/winner", label: "Contest Winner" },
 ];
 
 const languages = [

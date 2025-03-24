@@ -12,7 +12,7 @@ export const useLanguageStore = create<LanguageState>((set) => {
   return {
     selectedLanguage: savedLanguage,
     setLanguage: (language) => {
-      Cookies.set("selectedLanguage", language, { expires: 365 });
+      Cookies.set("selectedLanguage", language, { expires: 30 });
       set({ selectedLanguage: language });
     },
   };

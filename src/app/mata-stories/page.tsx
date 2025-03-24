@@ -3,12 +3,12 @@
 import React from "react";
 import { Flower } from "lucide-react";
 import { useLanguageStore } from "@/store/languageStore";
-import { shriShakumbhariDeviContent } from "@/content/mataStories"; 
+import { MataStories } from "@/content/mataStories"; 
 
 const Mata_Stories = () => {
   const { selectedLanguage } = useLanguageStore();
   const displayLanguage = selectedLanguage || "english";
-  const content = shriShakumbhariDeviContent[displayLanguage as keyof typeof shriShakumbhariDeviContent] || shriShakumbhariDeviContent.english;
+  const content = MataStories[displayLanguage as keyof typeof MataStories] || MataStories.english;
 
   return (
     <div className="min-h-screen bg-gradient-to-r from-[#141E30] to-[#243B55]">

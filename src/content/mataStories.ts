@@ -1,7 +1,7 @@
-import { Language, AdditionalInfo,ShakumbhariDeviContent} from "@/types/content";
+import { Language,MataStoriesContent} from "@/types/content";
 
 
-export const shriShakumbhariDeviContent: Record<Language, ShakumbhariDeviContent> = {
+export const MataStories: Record<Language, MataStoriesContent> = {
   english: {
     title: "Mata Shakumbhari Devi, Maa Bhima Devi, Bhramari Devi, and Mata Shatakshi",
     subtitle: "Jai Maa Shakumbhari Devi",

@@ -55,7 +55,7 @@ export interface AdditionalInfo {
   }[];
 }
 
-export interface ShakumbhariDeviContent {
+export interface MataStoriesContent {
   title: string;
   subtitle: string;
   paragraphs: string[];

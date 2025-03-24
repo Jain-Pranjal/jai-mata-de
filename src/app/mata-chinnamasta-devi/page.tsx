@@ -1,89 +1,65 @@
-import React from 'react';
+"use client";
+
+import React from "react";
 import Image from "next/image";
 import { Flower } from "lucide-react";
-import { mataChinnamastaDevi } from '@/content/mataChinnamastaDevi';
+import { useLanguageStore } from "@/store/languageStore";
+import { mataChinnamastaDeviContent } from "@/content/mataChinnamastaDevi";
 
 const MataChinnamastaDevi = () => {
-  const { hindi, english, images } = mataChinnamastaDevi;
-  
+  const { selectedLanguage } = useLanguageStore();
+  const displayLanguage = selectedLanguage || "english"; // Default to English
+  const content =
+    mataChinnamastaDeviContent[
+      displayLanguage as keyof typeof mataChinnamastaDeviContent
+    ] || mataChinnamastaDeviContent.english;
+
   return (
     <div className="min-h-screen bg-gradient-to-r from-[#141E30] to-[#243B55]">
-      <div className="container mx-auto px-4 py-8 space-y-16">
-        {/* Hindi Section */}
-        <div className="flex flex-col items-center gap-8 lg:flex-row lg:items-start lg:justify-between">
-          <div className="w-full lg:w-1/2">
-            <header className="text-center lg:text-left">
-              <h1 className="mb-4 bg-gradient-to-r from-amber-200 to-yellow-400 bg-clip-text text-3xl font-bold text-transparent md:text-4xl lg:text-5xl leading-normal break-words whitespace-normal">
-                {hindi.title}
-              </h1>
-              <div className="flex items-center justify-center gap-3 lg:justify-start">
-                <Flower className="h-5 w-5 text-yellow-400" />
-                <h2 className="text-xl font-semibold text-yellow-400 md:text-2xl">
-                  {hindi.subtitle}
-                </h2>
-                <Flower className="h-5 w-5 text-yellow-400" />
-              </div>
-            </header>
+      {/* Header Section */}
+      <header className="container mx-auto pt-8 pb-4 text-center">
+        <h1 className="mb-4 bg-gradient-to-r from-amber-200 to-yellow-400 bg-clip-text text-3xl font-bold text-transparent md:text-4xl lg:text-5xl p-2">
+          {content.title}
+        </h1>
+        <div className="flex items-center justify-center gap-3">
+          <Flower className="h-5 w-5 text-yellow-400" />
+          <h2 className="text-xl font-semibold text-yellow-400 md:text-2xl">
+            {content.subtitle}
+          </h2>
+          <Flower className="h-5 w-5 text-yellow-400" />
+        </div>
+      </header>
 
-            <div className="mt-8 space-y-6 rounded-xl bg-white/5 p-6 text-gray-200 text-base lg:text-xl backdrop-blur-sm">
-              <p>{hindi.description}</p>
-            </div>
-          </div>
-
-          {/* Image - Right side */}
-          <div className="relative w-full lg:w-5/12">
-            <div className="sticky top-8 aspect-[4/3] w-full overflow-hidden rounded-xl border-2 border-yellow-400/20 shadow-2xl">
-              <div className="relative h-full w-full">
-                <Image
-                  src={images.primary}
-                  alt={hindi.title}
-                  fill
-                  priority
-                  className="object-cover transition-transform duration-700 hover:scale-110"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                />
-              </div>
+      {/* Main Content */}
+      <main className="container mx-auto px-4">
+        {/* Image Section - Centered */}
+        <div className="relative mx-auto my-8 flex justify-center">
+          <div className="relative w-full max-w-3xl overflow-hidden rounded-xl border-2 border-yellow-400/20 shadow-2xl aspect-[16/9]">
+            <div className="transform transition-transform duration-700 hover:scale-110">
+              <Image
+                src={content.images.primary}
+                alt={content.title}
+                width={1920}
+                height={1080}
+                priority
+                className="object-cover w-full h-full"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              />
             </div>
           </div>
         </div>
 
-        {/* English Section */}
-        <div className="flex flex-col items-center gap-8 lg:flex-row lg:items-start lg:justify-between lg:mt-3">
-          <div className="relative w-full lg:w-5/12 order-2 lg:order-1">
-            <div className="sticky top-8 aspect-[4/3] w-full overflow-hidden rounded-xl border-2 border-yellow-400/20 shadow-2xl">
-              <div className="relative h-full w-full">
-                <Image
-                  src={images.secondary}
-                  alt={english.title}
-                  fill
-                  priority
-                  className="object-cover transition-transform duration-700 hover:scale-110"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                />
-              </div>
-            </div>
-          </div>
-
-          <div className="w-full lg:w-1/2 order-1 lg:order-2">
-            <header className="text-center lg:text-left">
-              <h1 className="mb-4 bg-gradient-to-r from-amber-200 to-yellow-400 bg-clip-text text-3xl font-bold text-transparent md:text-4xl lg:text-5xl leading-normal break-words whitespace-normal">
-                {english.title}
-              </h1>
-              <div className="flex items-center justify-center gap-3 lg:justify-start">
-                <Flower className="h-5 w-5 text-yellow-400" />
-                <h2 className="text-xl font-semibold text-yellow-400 md:text-2xl">
-                  {english.subtitle}
-                </h2>
-                <Flower className="h-5 w-5 text-yellow-400" />
-              </div>
-            </header>
-
-            <div className="mt-8 space-y-6 rounded-xl bg-white/5 p-6 text-gray-200 text-base lg:text-xl backdrop-blur-sm">
-              <p>{english.description}</p>
+        {/* Text Content */}
+        <div className="mx-auto max-w-3xl space-y-6 pb-12">
+          <div className="rounded-xl bg-white/5 p-6 backdrop-blur-sm">
+            <div className="space-y-4 text-gray-200 text-base lg:text-xl">
+              {content.paragraphs.map((paragraph, index) => (
+                <p key={index}>{paragraph}</p>
+              ))}
             </div>
           </div>
         </div>
-      </div>
+      </main>
     </div>
   );
 };

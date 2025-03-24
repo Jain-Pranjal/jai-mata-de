@@ -17,7 +17,7 @@ const MelaPage = () => {
     <div className="min-h-screen bg-gradient-to-r from-[#141E30] to-[#243B55]">
       {/* Header Section */}
       <header className="container mx-auto pt-8 pb-4 text-center">
-        <h1 className="mb-4 bg-gradient-to-r from-amber-200 to-yellow-400 bg-clip-text text-3xl font-bold text-transparent md:text-4xl lg:text-5xl">
+        <h1 className="mb-4 bg-gradient-to-r from-amber-200 to-yellow-400 bg-clip-text text-3xl font-bold text-transparent md:text-4xl lg:text-5xl p-2">
           {content.title}
         </h1>
         <div className="flex items-center justify-center gap-3">

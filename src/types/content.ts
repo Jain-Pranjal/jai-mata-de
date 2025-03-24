@@ -1,15 +1,3 @@
-import { execFileSync } from "child_process";
-
-export interface Content {
-    index: number;
-    hindiHeading: string;
-    englishHeading: string;
-    showFullHindi: boolean;
-    toggleHindi: () => void;
-    showFullEnglish: boolean;
-    toggleEnglish: () => void;
-  }
-
 
   export type Language = "english" | "hindi" | "tamil" | "telugu"; 
   export interface contentStyling {
@@ -74,5 +62,14 @@ export interface ShakumbhariDeviContent {
   additionalInfo: AdditionalInfo;
 }
 
+export interface ChinnamastaDeviContent {
+  title: string;
+  subtitle: string;
+  paragraphs: string[];
+  images: {
+    primary: string;
+    secondary: string;
+  };
+}
 
 

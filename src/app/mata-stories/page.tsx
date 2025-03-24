@@ -3,9 +3,9 @@
 import React from "react";
 import { Flower } from "lucide-react";
 import { useLanguageStore } from "@/store/languageStore";
-import { shriShakumbhariDeviContent } from "@/content/mata-stories"; 
+import { shriShakumbhariDeviContent } from "@/content/mataStories"; 
 
-const ShriShakumbhariDeviPage = () => {
+const Mata_Stories = () => {
   const { selectedLanguage } = useLanguageStore();
   const displayLanguage = selectedLanguage || "english";
   const content = shriShakumbhariDeviContent[displayLanguage as keyof typeof shriShakumbhariDeviContent] || shriShakumbhariDeviContent.english;
@@ -16,7 +16,7 @@ const ShriShakumbhariDeviPage = () => {
         <div className="w-full">
           {/* Header Section */}
           <header className="text-center">
-            <h1 className="mb-4 bg-gradient-to-r from-amber-200 to-yellow-400 bg-clip-text text-3xl font-bold text-transparent md:text-4xl lg:text-5xl leading-normal break-words whitespace-normal">
+            <h1 className="mb-4 bg-gradient-to-r from-amber-200 to-yellow-400 bg-clip-text text-3xl font-bold text-transparent md:text-4xl lg:text-5xl leading-normal break-words whitespace-normal p-2 ">
               {content.title}
             </h1>
             <div className="flex items-center justify-center gap-3">
@@ -64,4 +64,4 @@ const ShriShakumbhariDeviPage = () => {
   );
 };
 
-export default ShriShakumbhariDeviPage;
+export default Mata_Stories;

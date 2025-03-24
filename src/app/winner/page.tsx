@@ -10,12 +10,7 @@ const WinnerPage = () => {
   const displayLanguage = selectedLanguage || "english"; // Default to English
   const content = winnersContent[displayLanguage as keyof typeof winnersContent] || winnersContent.english;
 
-   // Convert embed URL to watch URL for fallback link
-   const getWatchUrl = (embedUrl: string) => {
-    const videoId = embedUrl.split("/embed/")[1]?.split("?")[0];
-    return `https://www.youtube.com/watch?v=${videoId}`;
-  };
-
+ 
   return (
     <div className="min-h-screen bg-gradient-to-r from-[#141E30] to-[#243B55]">
       {/* Header Section */}

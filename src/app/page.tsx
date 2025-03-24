@@ -6,7 +6,7 @@ import { homePageLangContent } from "@/content/homePage";
 import Banner from "@/components/Banner";
 export default function Home() {
   const { selectedLanguage } = useLanguageStore();
-  const displayLanguage = selectedLanguage || "english"; // Default to English if no language is selected
+  const displayLanguage = selectedLanguage || "english"; 
 
   // Fetch content based on the selected language, fallback to English if unavailable
   const content = homePageLangContent[displayLanguage as keyof typeof homePageLangContent] || homePageLangContent.english;
@@ -15,7 +15,7 @@ export default function Home() {
     <div className="h-full bg-gradient-to-r from-[#141E30] to-[#243B55]">
       {/* Banner Section */}
       <Banner />
-      
+
       {/* Header Section */}
       <header className="container mx-auto pt-8 pb-4 text-center">
         <h1 className="text-2xl font-bold text-white md:text-3xl lg:text-4xl">

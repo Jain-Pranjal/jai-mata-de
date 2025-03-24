@@ -73,3 +73,23 @@ export interface ChinnamastaDeviContent {
 }
 
 
+export interface AartiContent {
+  title: string;
+  subtitle: string;
+  aartiTitle: string;
+  verses: string[][];
+  image: string;
+}
+
+export interface ShakumbhariDeviContent {
+  title: string;
+  subtitle: string;
+  sections: {
+    heading: string;
+    paragraphs: string[]; 
+  }[];
+  images: string[];
+  showMoreText: string;
+  showLessText: string;
+}
+

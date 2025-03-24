@@ -1,80 +1,79 @@
-// aarti.ts
-import { Language, AartiContent } from "@/types/content";
 
+import { Language, AartiContent } from "@/types/content";
 export const aartiContent: Record<Language, AartiContent> = {
     english: {
-        title: "Mata Shakambhari Devi, Maa Bhima Devi, Bhramari Devi, and Mata Shatakshi",
-        subtitle: "|| Jai Maa Shakambhari Devi ||",
-        aartiTitle: "Aarti of Maa Shakambhari Devi Ji",
+        title: "Mata Shakumbhari Devi, Maa Bhima Devi, Bhramari Devi, aur Mata Shatakshi",
+        subtitle: "|| Jai Maa Shakumbhari Devi ||",
+        aartiTitle: "Aarti Maa Shakumbhari Devi Ji ki",
         verses: [
           [
-            "Hari Om Shri Shakumbhari Ambaji ki Aarti karo",
-            "Aisi adbhut roop dil mein rakh lo",
+            "Hari Om Shri Shakumbhari Ambaji ki Aarti kijo",
+            "Aisi adbhut roop hriday dhar lijo",
           ],
           [
-            "Shatakshi dyaalu ki Aarti karo",
-            "Tum complete adi Bhawani Maa, sab dil tum apne bolte Maa",
+            "Shatakshi dayalu ki Aarti kijo",
+            "Tum paripurn adi Bhawani Maa, sab ghat tum aap bakhani Maa",
           ],
           [
-            "Shakumbhari Ambaji ki Aarti karo",
-            "Tum hi ho Shakumbhar, tum hi ho Shatakshi Maa",
+            "Shakumbhari Ambaji ki Aarti kijo",
+            "Tumhi ho Shakumbhar, tum hi ho Shatakshi Maa",
           ],
           [
             "Shivmurti maya prakashi Maa,",
-            "Shakumbhari Ambaji ki Aarti karo",
+            "Shakumbhari Ambaji ki Aarti kijo",
           ],
           [
             "Nitya jo nar-naari Ambe Aarti gaave Maa",
-            "Ichha poori karo, Shakumbhar darshan do Maa",
+            "Ichha poori kijo, Shakumbhar darshan paave Maa",
           ],
           [
-            "Shakumbhari Ambaji ki Aarti karo",
+            "Shakumbhari Ambaji ki Aarti kijo",
             "Jo nar Aarti padhe padhaave Maa, jo nar Aarti sunaave Maa",
           ],
           [
             "Bas Vaikunth Shakumbhar darshan paave",
-            "Shakumbhari Ambaji ki Aarti karo",
+            "Shakumbhari Ambaji ki Aarti kijo",
           ],
         ],
         image: "/aarti.png",
       },
   
     hindi: {
-    title: "माता शाकम्भरी देवी, माँ भीमा देवी, भ्रामरी देवी और माता शताक्षी",
-    subtitle: "।। जय माँ शाकम्भरी देवी ।।",
-    aartiTitle: "आरती माँ शाकम्भरी देवी जी की",
-    verses: [
-      [
-        "हरि ॐ श्री शाकुम्भरी अम्बाजी की आरती कीजो",
-        "ऐसी अद्भुत रूप हृदय धर लीजो",
-      ],
-      [
-        "शताक्षी दयालु की आरती कीजो",
-        "तुम परिपूर्ण आदि भवानी माँ, सब घट तुम आप बखानी माँ",
-      ],
-      [
-        "शाकुम्भरी अम्बाजी की आरती कीजो",
-        "तुम्हीं हो शाकुम्भर, तुम ही हो सताक्षी माँ",
-      ],
-      [
-        "शिवमूर्ति माया प्रकाशी माँ,",
-        "शाकुम्भरी अम्बाजी की आरती कीजो",
-      ],
-      [
-        "नित जो नर-नारी अम्बे आरती गावे माँ",
-        "इच्छा पूर्ण कीजो, शाकुम्भर दर्शन पावे माँ",
-      ],
-      [
-        "शाकुम्भरी अम्बाजी की आरती कीजो",
-        "जो नर आरती पढ़े पढ़ावे माँ, जो नर आरती सुनावे माँ",
-      ],
-      [
-        "बस बैकुंठ शाकुम्भर दर्शन पावे",
-        "शाकुम्भरी अम्बाजी की आरती कीजो",
-      ],
-    ],
-    image: "/aarti.png",
-  },
+        title: "माता शाकम्भरी देवी, माँ भीमा देवी, भ्रामरी देवी और माता शताक्षी",
+        subtitle: "।। जय माँ शाकम्भरी देवी ।।",
+        aartiTitle: "आरती माँ शाकम्भरी देवी जी की",
+        verses: [
+          [
+            "हरि ॐ श्री शाकुम्भरी अम्बाजी की आरती कीजो",
+            "ऐसी अद्भुत रूप हृदय धर लीजो",
+          ],
+          [
+            "शताक्षी दयालु की आरती कीजो",
+            "तुम परिपूर्ण आदि भवानी माँ, सब घट तुम आप बखानी माँ",
+          ],
+          [
+            "शाकुम्भरी अम्बाजी की आरती कीजो",
+            "तुम्हीं हो शाकुम्भर, तुम ही हो सताक्षी माँ",
+          ],
+          [
+            "शिवमूर्ति माया प्रकाशी माँ,",
+            "शाकुम्भरी अम्बाजी की आरती कीजो",
+          ],
+          [
+            "नित जो नर-नारी अम्बे आरती गावे माँ",
+            "इच्छा पूर्ण कीजो, शाकुम्भर दर्शन पावे माँ",
+          ],
+          [
+            "शाकुम्भरी अम्बाजी की आरती कीजो",
+            "जो नर आरती पढ़े पढ़ावे माँ, जो नर आरती सुनावे माँ",
+          ],
+          [
+            "बस बैकुंठ शाकुम्भर दर्शन पावे",
+            "शाकुम्भरी अम्बाजी की आरती कीजो",
+          ],
+        ],
+        image: "/aarti.png",
+    },
  
   tamil: {
     title: "மாதா சாகம்பரி தேவி, மா பீமா தேவி, பிரமரி தேவி மற்றும் மாதா சதாக்ஷி",

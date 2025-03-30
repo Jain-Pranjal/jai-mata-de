@@ -5,11 +5,15 @@ import Image from "next/image";
 import { Flower } from "lucide-react";
 import { useLanguageStore } from "@/store/languageStore";
 import { shakumbhariDeviContent } from "@/content/ShakumbhariDevi";
+import { homePageLangContent } from "@/content/homePage";
 
 const ShakumbhariDevi = () => {
   const { selectedLanguage } = useLanguageStore();
   const displayLanguage = selectedLanguage || "english"; // Default to English
+  
   const content = shakumbhariDeviContent[displayLanguage as keyof typeof shakumbhariDeviContent] || shakumbhariDeviContent.english;
+
+  const homeContent = homePageLangContent[displayLanguage as keyof typeof homePageLangContent] || homePageLangContent.english;
 
   // State for showing full content for each section
   const [showFullContent, setShowFullContent] = useState<boolean[]>(new Array(content.sections.length).fill(false));
@@ -37,6 +41,47 @@ const ShakumbhariDevi = () => {
             <Flower className="h-5 w-5 text-yellow-400" />
           </div>
         </header>
+
+
+
+
+      {/* adding the home page content herre */}
+
+      <div className="relative  my-8 flex justify-center">
+                    <div className="relative w-full max-w-3xl overflow-hidden rounded-lg shadow-xl">
+                      <div className="transform transition-transform duration-300 hover:scale-105">
+                        <Image
+                          src="/home.png"
+                          alt={
+                            displayLanguage === "english"
+                              ? "Jai Mata Di"
+                              : displayLanguage === "hindi"
+                              ? "जय माता दी"
+                              : displayLanguage === "tamil"
+                              ? "ஜெய் மாதா தீ"
+                              : displayLanguage === "telugu"
+                              ? "జయ్ మాతా ది"
+                              : "ಜಯ್ ಮಾತಾ ದಿ" // kannada
+                          }
+                          width={1920}
+                          height={1080}
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          priority
+                          className="object-contain w-full h-auto"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+      <div className="mx-auto max-w-3xl space-y-4 pb-12 text-justify text-gray-200">
+          {homeContent.paragraphs.map((paragraph, index) => (
+            <p key={index} className="text-base leading-relaxed md:text-lg">
+              {paragraph}
+            </p>
+          ))}
+        </div>
+
+
 
         {/* Image Grid with Content Below Each Image */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -76,6 +121,11 @@ const ShakumbhariDevi = () => {
             </div>
           ))}
         </div>
+
+
+
+
+
       </div>
     </div>
   );

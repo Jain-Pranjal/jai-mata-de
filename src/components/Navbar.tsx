@@ -1,17 +1,29 @@
-"use client";
+"use client"
 
-import { useState } from "react";
-import Link from "next/link";
-import Image from "next/image";
-import { Menu, Languages } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from "@/components/ui/dropdown-menu";
-import { useLanguageStore } from "@/store/languageStore";
+import { useState } from "react"
+import Link from "next/link"
+import Image from "next/image"
+import { Menu, Languages, ChevronDown, ChevronRight } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from "@/components/ui/dropdown-menu"
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
+import { useLanguageStore } from "@/store/languageStore"
 
+// Updated routes with dropdown for Shri Shakumbhari Devi
 const routes = [
   { href: "/", label: "Home" },
-  { href: "/shri-shakumbhari-devi", label: "Shri Shakumbhari Devi" },
+  {
+    href: "/shri-shakumbhari-devi",
+    label: "Shri Shakumbhari Devi",
+    dropdown: true,
+    items: [
+      { href: "/shri-shakumbhari-devi/banshankari", label: "Banshankari" },
+      { href: "/shri-shakumbhari-devi/temple1", label: "Temple1" },
+      { href: "/shri-shakumbhari-devi/Temple1", label: "Temple1" },
+      { href: "/shri-shakumbhari-devi/Temple1", label: "Temple1" },
+    ],
+  },
   { href: "/bhura-dev", label: "Bhura Dev" },
   { href: "/mata-chinnamasta-devi", label: "Mata Chinnamasta Devi" },
   { href: "/mela", label: "Mela" },
@@ -19,19 +31,24 @@ const routes = [
   { href: "/aarti", label: "Aarti" },
   { href: "/navigation", label: "Navigation" },
   { href: "/winner", label: "Contest Winner" },
-];
+]
 
 const languages = [
   { value: "english", label: "English" },
   { value: "hindi", label: "हिंदी" },
   { value: "tamil", label: "தமிழ்" },
   { value: "telugu", label: "తెలుగు" },
-  { value: "kannada", label: "ಕನ್ನಡ" }  
-];
+  { value: "kannada", label: "ಕನ್ನಡ" },
+]
 
 export function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
-  const { selectedLanguage, setLanguage } = useLanguageStore();
+  const [isOpen, setIsOpen] = useState(false)
+  const [openCollapsible, setOpenCollapsible] = useState<string | null>(null)
+  const { selectedLanguage, setLanguage } = useLanguageStore()
+
+  const toggleCollapsible = (label: string) => {
+    setOpenCollapsible(openCollapsible === label ? null : label)
+  }
 
   return (
     <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -45,17 +62,42 @@ export function Navbar() {
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex md:items-center md:gap-8">
-          {routes.map((route) => (
-            <Link
-              key={route.href}
-              href={route.href}
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-            >
-              {route.label}
-            </Link>
-          ))}
+          {routes.map((route) =>
+            route.dropdown ? (
+              <DropdownMenu key={route.href}>
+                <DropdownMenuTrigger className="flex items-center gap-1 text-sm font-medium text-muted-foreground transition-colors hover:text-primary">
+                  {route.label}
+                  <ChevronDown className="h-4 w-4" />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="center" className="w-48">
+                  <DropdownMenuItem asChild>
+                    <Link href={route.href} className="w-full">
+                    {route.label}
+                    </Link>
+                  </DropdownMenuItem>
+                  {route.items?.map((item) => (
+                    <DropdownMenuItem key={item.href} asChild>
+                      <Link href={item.href} className="w-full">
+                        {item.label}
+                      </Link>
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
+            ) : (
+              <Link
+                key={route.href}
+                href={route.href}
+                className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+              >
+                {route.label}
+              </Link>
+            ),
+          )}
           <Link href="/contactus">
-            <Button size="sm" className="cursor-pointer">Contact Us</Button>
+            <Button size="sm" className="cursor-pointer">
+              Contact Us
+            </Button>
           </Link>
 
           {/* Language Dropdown */}
@@ -93,16 +135,52 @@ export function Navbar() {
                 <span className="font-bold">Jai Mata Di</span>
               </Link>
               <div className="flex flex-col space-y-3 pl-4">
-                {routes.map((route) => (
-                  <Link
-                    key={route.href}
-                    href={route.href}
-                    className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    {route.label}
-                  </Link>
-                ))}
+                {routes.map((route) =>
+                  route.dropdown ? (
+                    <Collapsible
+                      key={route.href}
+                      open={openCollapsible === route.label}
+                      onOpenChange={() => toggleCollapsible(route.label)}
+                      className="w-full"
+                    >
+                      <CollapsibleTrigger className="flex w-full items-center  text-sm font-medium text-muted-foreground transition-colors hover:text-primary">
+                        {route.label}
+                        <ChevronRight
+                          className={`h-4 w-4 transition-transform ${openCollapsible === route.label ? "rotate-90" : ""}`}
+                        />
+                      </CollapsibleTrigger>
+                      <CollapsibleContent className="pl-4 pt-2">
+                        <Link
+                          href={route.href}
+                          className="block py-1 text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+                          onClick={() => setIsOpen(false)}
+                        >
+                          {route.label}
+                        </Link>
+                        {route.items?.map((item) => (
+                          <Link
+                            key={item.href}
+                            href={item.href}
+                            className="block py-1 text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+                            onClick={() => setIsOpen(false)}
+                          >
+                            {item.label}
+                          </Link>
+                        ))}
+                      </CollapsibleContent>
+                    </Collapsible>
+                  ) : (
+                    <Link
+                      key={route.href}
+                      href={route.href}
+                      className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      {route.label}
+                    </Link>
+                  ),
+                )}
+
                 <Link href="/contactus">
                   <Button className="mt-2" size="sm" onClick={() => setIsOpen(false)}>
                     Contact Us
@@ -134,5 +212,5 @@ export function Navbar() {
         </Sheet>
       </div>
     </nav>
-  );
+  )
 }

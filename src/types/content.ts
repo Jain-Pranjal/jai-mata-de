@@ -110,3 +110,10 @@ export interface BannerContent {
   linkUrl: string;
 }
 
+export interface NotFoundContent {
+  title: string; 
+  subtitle: string;
+  description: string; 
+  buttonText: string; 
+}
+

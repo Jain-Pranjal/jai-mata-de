@@ -1,5 +1,5 @@
 
-  export type Language = "english" | "hindi" | "tamil" | "telugu"; 
+  export type Language = "english" | "hindi" | "tamil" | "telugu" | "kannada" ; 
   export interface contentStyling {
   title: string;
   paragraphs: string[];

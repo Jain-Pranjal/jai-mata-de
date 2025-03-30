@@ -98,4 +98,29 @@ export const winnersContent: Record<Language, WinnerContent> = {
       },
     ],
   },
+
+  kannada: {
+    title: "ಪೊಟಿ ವಿಜೇತರು",
+    subtitle: "ನಮ್ಮ ವಿಜೇತರಿಗೆ ಅಭಿನಂದನೆಗಳು!",
+    winners: [
+      {
+        position: "ಮೊದಲ ಸ್ಥಾನ",
+        name: "ವಿಜೇತ ಹೆಸರು",
+        videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        trophy: "🏆",
+      },
+      {
+        position: "ಎರಡನೇ ಸ್ಥಾನ",
+        name: "ರನ್ನರ್ ಅಪ್",
+        videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        trophy: "🥈",
+      },
+      {
+        position: "ಮೂರನೇ ಸ್ಥಾನ",
+        name: "ಎರಡನೇ ರನ್ನರ್ ಅಪ್",
+        videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        trophy: "🥉",
+      },
+    ],
+  },
 };

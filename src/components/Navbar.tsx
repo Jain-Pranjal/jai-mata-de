@@ -26,6 +26,7 @@ const languages = [
   { value: "hindi", label: "हिंदी" },
   { value: "tamil", label: "தமிழ்" },
   { value: "telugu", label: "తెలుగు" },
+  { value: "kannada", label: "ಕನ್ನಡ" }  
 ];
 
 export function Navbar() {

@@ -52,6 +52,7 @@ export default function LanguagePopup() {
                     { value: "hindi", label: "Hindi" },
                     { value: "tamil", label: "Tamil" },
                     { value: "telugu", label: "Telugu" },
+                    { value: "kannada", label: "Kannada" },   
                   ].map((lang) => (
                     <LanguageOption
                       key={lang.value}

@@ -38,7 +38,9 @@ export default function Home() {
                     ? "जय माता दी"
                     : displayLanguage === "tamil"
                     ? "ஜெய் மாதா தீ"
-                    : "జై మాత దీ" // Telugu
+                    : displayLanguage === "telugu"
+                    ? "జయ్ మాతా ది"
+                    : "ಜಯ್ ಮಾತಾ ದಿ" // kannada
                 }
                 width={1920}
                 height={1080}

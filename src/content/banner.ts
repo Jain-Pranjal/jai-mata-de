@@ -28,4 +28,9 @@ export const bannerContent: Record<Language, BannerContent> = {
     linkText: "పోటీ విజేతల పేజీ",
     linkUrl: "/winner",
   },
+  kannada: {
+    message: "ವಿಜೇತರು ಘೋಷಿಸಲಾಗಿದೆ, ದಯವಿಟ್ಟು ಪರಿಶೀಲಿಸಿ",
+    linkText: "ಪೋಟಿಯ ವಿಜೇತ ಪುಟ",
+    linkUrl: "/winner",
+  },
 };

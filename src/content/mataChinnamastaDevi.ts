@@ -46,4 +46,15 @@ export const mataChinnamastaDeviContent: Record<Language, ChinnamastaDeviContent
       secondary: "/chinmastadevi2.png",
     },
   },
+  kannada: {
+    title: "ಮಾತಾ ಚಿನ್ನಮಸ್ತಾ ದೇವಿ ದೇವಸ್ಥಾನ",
+    subtitle: "ಜೈ ಮಾತಾ ಚಿನ್ನಮಸ್ತಾ",
+    paragraphs: [
+      "ಶಾಕಂಭರಿ ದೇವಿ ದೇವಸ್ಥಾನದ ಹತ್ತಿರ ಮಾತಾ ಚಿನ್ನಮಸ್ತಾ ದೇವಿ ಮತ್ತು ಮನ್ಸಾ ದೇವಿಯ ಸಂಯುಕ್ತ ದೇವಸ್ಥಾನವಿದೆ. ಮಾತಾ ಚಿನ್ನಮಸ್ತಾ ದೇವಸ್ಥಾನ ನಾಲ್ಕು ಶಿವ ದೇವಾಲಯಗಳ ಮಧ್ಯೆ ಇದೆ: ಪೂರ್ವದಲ್ಲಿ ಕಮಲೇಶ್ವರ ಮಹಾದೇವ್, ಪಶ್ಚಿಮದಲ್ಲಿ ಶಾಕೇಶ್ವರ ಮಹಾದೇವ್, ಉತ್ತರದಲ್ಲಿ ವಟುಕೇಶ್ವರ ಮಹಾದೇವ್ ಮತ್ತು ದಕ್ಷಿಣದಲ್ಲಿ ಇಂದ್ರೇಶ್ವರ ಮಹಾದೇವ್.",
+    ],
+    images: {
+      primary: "/chinmastadevi1.png",
+      secondary: "/chinmastadevi2.png",
+    },
+  },
 };

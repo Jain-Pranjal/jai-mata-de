@@ -1,3 +1,4 @@
+
 "use client"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
@@ -11,123 +12,50 @@ import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, Command
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { cn } from "@/lib/utils"
 import { toast } from "sonner"
+import { useState } from "react"
 
-// Sample data for dropdowns
 const countries = [
   { label: "India", value: "india" },
-//   { label: "United States", value: "us" },
-//   { label: "United Kingdom", value: "uk" },
-//   { label: "Canada", value: "canada" },
-//   { label: "Australia", value: "australia" },
-//   { label: "Germany", value: "germany" },
-//   { label: "France", value: "france" },
-//   { label: "Japan", value: "japan" },
-//   { label: "China", value: "china" },
-//   { label: "Brazil", value: "brazil" },
 ]
 
-// const indianCities = [
-//     { label: "Delhi", value: "delhi" },
-//     { label: "Mumbai", value: "mumbai" },
-//     { label: "Bangalore", value: "bangalore" },
-//     { label: "Chennai", value: "chennai" },
-//     { label: "Kolkata", value: "kolkata" },
-//     { label: "Hyderabad", value: "hyderabad" },
-//     { label: "Pune", value: "pune" },
-//     { label: "Ahmedabad", value: "ahmedabad" },
-//     { label: "Jaipur", value: "jaipur" },
-//     { label: "Lucknow", value: "lucknow" },
-//     { label: "Surat", value: "surat" },
-//     { label: "Kanpur", value: "kanpur" },
-//     { label: "Nagpur", value: "nagpur" },
-//     { label: "Indore", value: "indore" },
-//     { label: "Bhopal", value: "bhopal" },
-//     { label: "Ludhiana", value: "ludhiana" },
-//     { label: "Agra", value: "agra" },
-//     { label: "Varanasi", value: "varanasi" },
-//     { label: "Patna", value: "patna" },
-//     { label: "Nashik", value: "nashik" },
-//     { label: "Vadodara", value: "vadodara" },
-//     { label: "Meerut", value: "meerut" },
-//     { label: "Rajkot", value: "rajkot" },
-//     { label: "Jodhpur", value: "jodhpur" },
-//     { label: "Coimbatore", value: "coimbatore" },
-//     { label: "Madurai", value: "madurai" },
-//     { label: "Thiruvananthapuram", value: "thiruvananthapuram" },
-//     { label: "Visakhapatnam", value: "visakhapatnam" },
-//     { label: "Guwahati", value: "guwahati" },
-//     { label: "Chandigarh", value: "chandigarh" },
-//     { label: "Amritsar", value: "amritsar" },
-//     { label: "Ranchi", value: "ranchi" },
-//     { label: "Bhubaneswar", value: "bhubaneswar" },
-//     { label: "Dehradun", value: "dehradun" },
-//     { label: "Shimla", value: "shimla" },
-//     { label: "Gangtok", value: "gangtok" },
-//     { label: "Itanagar", value: "itanagar" },
-//     { label: "Shillong", value: "shillong" },
-//     { label: "Aizawl", value: "aizawl" },
-//     { label: "Imphal", value: "imphal" },
-//     { label: "Kohima", value: "kohima" },
-//     { label: "Panaji", value: "panaji" },
-//     { label: "Pondicherry", value: "pondicherry" },
-//     { label: "Silchar", value: "silchar" },
-//     { label: "Gwalior", value: "gwalior" },
-//     { label: "Jammu", value: "jammu" },
-//     { label: "Srinagar", value: "srinagar" },
-//     { label: "Udaipur", value: "udaipur" },
-//     { label: "Mysore", value: "mysore" },
-//     { label: "Tiruchirappalli", value: "tiruchirappalli" },
-//     { label: "Bareilly", value: "bareilly" },
-//     { label: "Jamshedpur", value: "jamshedpur" },
-//     { label: "Cuttack", value: "cuttack" },
-//     { label: "Dhanbad", value: "dhanbad" },
-//     { label: "Allahabad", value: "allahabad" },
-//     { label: "Noida", value: "noida" },
-//     { label: "Gurgaon", value: "gurgaon" },
-//     { label: "Faridabad", value: "faridabad" },
-//     { label: "Ghaziabad", value: "ghaziabad" }
-//   ];
-
-  const indianStates = [
-    { label: "Andhra Pradesh", value: "andhra_pradesh" },
-    { label: "Arunachal Pradesh", value: "arunachal_pradesh" },
-    { label: "Assam", value: "assam" },
-    { label: "Bihar", value: "bihar" },
-    { label: "Chhattisgarh", value: "chhattisgarh" },
-    { label: "Goa", value: "goa" },
-    { label: "Gujarat", value: "gujarat" },
-    { label: "Haryana", value: "haryana" },
-    { label: "Himachal Pradesh", value: "himachal_pradesh" },
-    { label: "Jharkhand", value: "jharkhand" },
-    { label: "Karnataka", value: "karnataka" },
-    { label: "Kerala", value: "kerala" },
-    { label: "Madhya Pradesh", value: "madhya_pradesh" },
-    { label: "Maharashtra", value: "maharashtra" },
-    { label: "Manipur", value: "manipur" },
-    { label: "Meghalaya", value: "meghalaya" },
-    { label: "Mizoram", value: "mizoram" },
-    { label: "Nagaland", value: "nagaland" },
-    { label: "Odisha", value: "odisha" },
-    { label: "Punjab", value: "punjab" },
-    { label: "Rajasthan", value: "rajasthan" },
-    { label: "Sikkim", value: "sikkim" },
-    { label: "Tamil Nadu", value: "tamil_nadu" },
-    { label: "Telangana", value: "telangana" },
-    { label: "Tripura", value: "tripura" },
-    { label: "Uttar Pradesh", value: "uttar_pradesh" },
-    { label: "Uttarakhand", value: "uttarakhand" },
-    { label: "West Bengal", value: "west_bengal" },
-    { label: "Andaman and Nicobar Islands", value: "andaman_nicobar" },
-    { label: "Chandigarh", value: "chandigarh" },
-    { label: "Dadra and Nagar Haveli and Daman and Diu", value: "dadra_nagar_haveli_daman_diu" },
-    { label: "Delhi", value: "delhi" },
-    { label: "Jammu and Kashmir", value: "jammu_kashmir" },
-    { label: "Ladakh", value: "ladakh" },
-    { label: "Lakshadweep", value: "lakshadweep" },
-    { label: "Puducherry", value: "puducherry" },
-  ];
-  
-  
+const indianStates = [
+  { label: "Andhra Pradesh", value: "andhra_pradesh" },
+  { label: "Arunachal Pradesh", value: "arunachal_pradesh" },
+  { label: "Assam", value: "assam" },
+  { label: "Bihar", value: "bihar" },
+  { label: "Chhattisgarh", value: "chhattisgarh" },
+  { label: "Goa", value: "goa" },
+  { label: "Gujarat", value: "gujarat" },
+  { label: "Haryana", value: "haryana" },
+  { label: "Himachal Pradesh", value: "himachal_pradesh" },
+  { label: "Jharkhand", value: "jharkhand" },
+  { label: "Karnataka", value: "karnataka" },
+  { label: "Kerala", value: "kerala" },
+  { label: "Madhya Pradesh", value: "madhya_pradesh" },
+  { label: "Maharashtra", value: "maharashtra" },
+  { label: "Manipur", value: "manipur" },
+  { label: "Meghalaya", value: "meghalaya" },
+  { label: "Mizoram", value: "mizoram" },
+  { label: "Nagaland", value: "nagaland" },
+  { label: "Odisha", value: "odisha" },
+  { label: "Punjab", value: "punjab" },
+  { label: "Rajasthan", value: "rajasthan" },
+  { label: "Sikkim", value: "sikkim" },
+  { label: "Tamil Nadu", value: "tamil_nadu" },
+  { label: "Telangana", value: "telangana" },
+  { label: "Tripura", value: "tripura" },
+  { label: "Uttar Pradesh", value: "uttar_pradesh" },
+  { label: "Uttarakhand", value: "uttarakhand" },
+  { label: "West Bengal", value: "west_bengal" },
+  { label: "Andaman and Nicobar Islands", value: "andaman_nicobar" },
+  { label: "Chandigarh", value: "chandigarh" },
+  { label: "Dadra and Nagar Haveli and Daman and Diu", value: "dadra_nagar_haveli_daman_diu" },
+  { label: "Delhi", value: "delhi" },
+  { label: "Jammu and Kashmir", value: "jammu_kashmir" },
+  { label: "Ladakh", value: "ladakh" },
+  { label: "Lakshadweep", value: "lakshadweep" },
+  { label: "Puducherry", value: "puducherry" },
+];
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -136,11 +64,11 @@ const formSchema = z.object({
   email: z.string().email({
     message: "Please enter a valid email address.",
   }),
-  city: z.string({
-    required_error: "Please select a city.",
-  }),
-  state: z.string().min(2, {
-    message: "State must be at least 2 characters.",
+//   city: z.string().min(2, {
+//     message: "City must be at least 2 characters.",
+//   }),
+  state: z.string({
+    required_error: "Please select a state.",
   }),
   country: z.string({
     required_error: "Please select a country.",
@@ -151,35 +79,67 @@ const formSchema = z.object({
   address: z.string().min(5, {
     message: "Address must be at least 5 characters.",
   }),
-  youtubeLink: z
-    .string()
-    .url({
-      message: "Please enter a valid YouTube URL.",
-    })
-    .or(z.literal("")),
-})
+  youtubeLink: z.string().url({
+    message: "Please enter a valid YouTube URL.",
+  })
+});
 
 export default function RegistrationForm() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
       email: "",
-      city: "",
+    //   city: "",
       state: "",
       country: "",
       phone: "",
       address: "",
       youtubeLink: "",
     },
-  })
+  });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values)
-    toast({
-      title: "Registration Successful!",
-      description: "Thank you for registering with us.",
-    })
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    try {
+      setIsSubmitting(true);
+      console.log("Form values before submission:", values);
+      
+      // Create FormData object manually
+      const formData = new FormData();
+      Object.entries(values).forEach(([key, value]) => {
+        formData.append(key, value);
+      });
+      
+      // Log FormData (for debugging)
+      console.log("FormData created:", Object.fromEntries(formData.entries()));
+      
+      const response = await fetch('/api/register', {
+        method: 'POST',
+        body: formData,
+      });
+      
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || "Failed to submit form");
+      }
+      
+      const data = await response.json();
+      toast.success("Registration Successful!", {
+        description: "Thank you for registering with us.",
+      });
+      
+      // Reset form on success
+      form.reset();
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      toast.error("Registration failed. Please try again.", {
+        description: error instanceof Error ? error.message : "Unknown error occurred",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -237,6 +197,7 @@ export default function RegistrationForm() {
                       <Button
                         variant="outline"
                         role="combobox"
+                        type="button"
                         className={cn(
                           "justify-between bg-white/20 text-white placeholder:text-gray-300",
                           !field.value && "text-gray-300",
@@ -260,7 +221,7 @@ export default function RegistrationForm() {
                               key={country.value}
                               value={country.value}
                               onSelect={() => {
-                                form.setValue("country", country.value)
+                                form.setValue("country", country.value);
                               }}
                             >
                               <Check
@@ -282,60 +243,59 @@ export default function RegistrationForm() {
             )}
           />
 
-        
-
-       {/* State Dropdown */}
-<FormField
-  control={form.control}
-  name="state"
-  render={({ field }) => (
-    <FormItem className="flex flex-col">
-      <FormLabel className="text-white">State</FormLabel>
-      <Popover>
-        <PopoverTrigger asChild>
-          <FormControl>
-            <Button
-              variant="outline"
-              role="combobox"
-              className={cn(
-                "justify-between bg-white/20 text-white placeholder:text-gray-300",
-                !field.value && "text-gray-300",
-              )}
-            >
-              {field.value ? indianStates.find((state) => state.value === field.value)?.label : "Select state"}
-              <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-            </Button>
-          </FormControl>
-        </PopoverTrigger>
-        <PopoverContent className="w-full p-0">
-          <Command>
-            <CommandInput placeholder="Search state..." />
-            <CommandList>
-              <CommandEmpty>No state found.</CommandEmpty>
-              <CommandGroup className="max-h-60 overflow-y-auto">
-                {indianStates.map((state) => (
-                  <CommandItem
-                    key={state.value}
-                    value={state.value}
-                    onSelect={() => {
-                      form.setValue("state", state.value)
-                    }}
-                  >
-                    <Check
-                      className={cn("mr-2 h-4 w-4", state.value === field.value ? "opacity-100" : "opacity-0")}
-                    />
-                    {state.label}
-                  </CommandItem>
-                ))}
-              </CommandGroup>
-            </CommandList>
-          </Command>
-        </PopoverContent>
-      </Popover>
-      <FormMessage />
-    </FormItem>
-  )}
-/>
+          {/* State Dropdown */}
+          <FormField
+            control={form.control}
+            name="state"
+            render={({ field }) => (
+              <FormItem className="flex flex-col">
+                <FormLabel className="text-white">State</FormLabel>
+                <Popover>
+                  <PopoverTrigger asChild>
+                    <FormControl>
+                      <Button
+                        variant="outline"
+                        role="combobox"
+                        type="button"
+                        className={cn(
+                          "justify-between bg-white/20 text-white placeholder:text-gray-300",
+                          !field.value && "text-gray-300",
+                        )}
+                      >
+                        {field.value ? indianStates.find((state) => state.value === field.value)?.label : "Select state"}
+                        <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                      </Button>
+                    </FormControl>
+                  </PopoverTrigger>
+                  <PopoverContent className="w-full p-0">
+                    <Command>
+                      <CommandInput placeholder="Search state..." />
+                      <CommandList>
+                        <CommandEmpty>No state found.</CommandEmpty>
+                        <CommandGroup className="max-h-60 overflow-y-auto">
+                          {indianStates.map((state) => (
+                            <CommandItem
+                              key={state.value}
+                              value={state.value}
+                              onSelect={() => {
+                                form.setValue("state", state.value);
+                              }}
+                            >
+                              <Check
+                                className={cn("mr-2 h-4 w-4", state.value === field.value ? "opacity-100" : "opacity-0")}
+                              />
+                              {state.label}
+                            </CommandItem>
+                          ))}
+                        </CommandGroup>
+                      </CommandList>
+                    </Command>
+                  </PopoverContent>
+                </Popover>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
           {/* Phone Field */}
           <FormField
@@ -400,12 +360,12 @@ export default function RegistrationForm() {
 
         <Button
           type="submit"
+          disabled={isSubmitting}
           className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold py-3 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105"
         >
-          Submit Registration
+          {isSubmitting ? "Submitting..." : "Submit Registration"}
         </Button>
       </form>
     </Form>
   )
 }
-

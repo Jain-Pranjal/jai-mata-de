@@ -42,6 +42,10 @@ export async function POST(request: NextRequest) {
       where: { email: validatedData.email },
     });
 
+    // apply on phone also 
+    // aslo email make opttional and validate by phone (compulsory)
+
+
     if (existingUser) {
       return NextResponse.json(
         { success: false, message: 'User with this email already exists' },

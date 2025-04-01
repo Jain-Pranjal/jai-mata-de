@@ -11,26 +11,26 @@ export const bannerContent: Record<Language, BannerContent> = {
   english: {
     message: "Winners have been announced, please check the",
     linkText: "Contest Winner Page",
-    linkUrl: "/winner", 
+    linkUrl: "/contest", 
   },
   hindi: {
     message: "विजेताओं की घोषणा हो चुकी है, कृपया देखें",
     linkText: "प्रतियोगिता विजेता पेज",
-    linkUrl: "/winner",
+    linkUrl: "/contest",
   },
   tamil: {
     message: "வெற்றியாளர்கள் அறிவிக்கப்பட்டுள்ளனர், தயவுசெய்து பார்க்கவும்",
     linkText: "போட்டி வெற்றியாளர் பக்கம்",
-    linkUrl: "/winner",
+    linkUrl: "/contest",
   },
   telugu: {
     message: "విజేతలు ప్రకటించబడ్డారు, దయచేసి చూడండి",
     linkText: "పోటీ విజేతల పేజీ",
-    linkUrl: "/winner",
+    linkUrl: "/contest",
   },
   kannada: {
     message: "ವಿಜೇತರು ಘೋಷಿಸಲಾಗಿದೆ, ದಯವಿಟ್ಟು ಪರಿಶೀಲಿಸಿ",
     linkText: "ಪೋಟಿಯ ವಿಜೇತ ಪುಟ",
-    linkUrl: "/winner",
+    linkUrl: "/contest",
   },
 };

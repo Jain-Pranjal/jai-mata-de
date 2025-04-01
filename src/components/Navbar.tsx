@@ -15,13 +15,13 @@ const routes = [
   { href: "/", label: "Home" },
   {
     href: "/shri-shakumbhari-devi",
-    label: "Shri Shakumbhari Devi",
+    label: "Shakumbhari Devi Dham",
     dropdown: true,
     items: [
       { href: "/shri-shakumbhari-devi/banshankari", label: "Banshankari" },
       { href: "/shri-shakumbhari-devi/temple1", label: "Temple1" },
       { href: "/shri-shakumbhari-devi/Temple1", label: "Temple1" },
-      { href: "/shri-shakumbhari-devi/Temple1", label: "Temple1" },
+
     ],
   },
   { href: "/bhura-dev", label: "Bhura Dev" },
@@ -30,7 +30,7 @@ const routes = [
   { href: "/mata-stories", label: "Mata Stories" },
   { href: "/aarti", label: "Aarti" },
   { href: "/navigation", label: "Navigation" },
-  { href: "/winner", label: "Contest Winner" },
+  { href: "/contest", label: "Contest" },
 ]
 
 const languages = [

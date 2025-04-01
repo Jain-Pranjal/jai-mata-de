@@ -104,16 +104,12 @@ export default function RegistrationForm() {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
       setIsSubmitting(true);
-      console.log("Form values before submission:", values);
       
       // Create FormData object manually
       const formData = new FormData();
       Object.entries(values).forEach(([key, value]) => {
         formData.append(key, value);
       });
-      
-      // Log FormData (for debugging)
-      console.log("FormData created:", Object.fromEntries(formData.entries()));
       
       const response = await fetch('/api/register', {
         method: 'POST',
@@ -125,7 +121,6 @@ export default function RegistrationForm() {
         throw new Error(errorData.message || "Failed to submit form");
       }
       
-      const data = await response.json();
       toast.success("Registration Successful!", {
         description: "Thank you for registering with us.",
       });
@@ -133,7 +128,7 @@ export default function RegistrationForm() {
       // Reset form on success
       form.reset();
     } catch (error) {
-      console.error("Error submitting form:", error);
+
       toast.error("Registration failed. Please try again.", {
         description: error instanceof Error ? error.message : "Unknown error occurred",
       });
@@ -369,3 +364,4 @@ export default function RegistrationForm() {
     </Form>
   )
 }
+

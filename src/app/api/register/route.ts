@@ -1,77 +1,128 @@
-// app/api/register/route.ts
-import { NextRequest, NextResponse } from 'next/server';
-import { z } from 'zod';
-import prisma from '@/lib/db';
 
-// Define the schema for validation
+import { NextRequest, NextResponse } from "next/server";
+import { z } from "zod";
+import prisma from "@/lib/db";
+import axios from "axios";
+
 const formSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
-  email: z.string().email({ message: "Please enter a valid email address." }),
-//   city: z.string().min(2, { message: "City must be at least 2 characters." }),
-  state: z.string().min(2, { message: "Please select a state." }),
-  country: z.string({ required_error: "Please select a country." }),
-  phone: z.string().min(10, { message: "Phone number must be at least 10 digits." }),
+  email: z
+    .string()
+    .optional()
+    .transform((val) => (val === "" ? undefined : val)) // Convert empty string to undefined
+    .refine((val) => !val || z.string().email().safeParse(val).success, {
+      message: "Please enter a valid email address.",
+    }),
+  phone: z
+    .string()
+    .length(10, { message: "Phone number must be exactly 10 digits." })
+    .regex(/^\d{10}$/, { message: "Phone number must contain only digits." }),
   address: z.string().min(5, { message: "Address must be at least 5 characters." }),
   youtubeLink: z.string().url({ message: "Please enter a valid YouTube URL." }),
 });
 
+async function verifyRecaptcha(token: string) {
+  const secretKey = process.env.RECAPTCHA_SECRET_KEY;
+  if (!secretKey) {
+    throw new Error("reCAPTCHA secret key is not configured.");
+  }
+
+  const response = await axios.post(
+    "https://www.google.com/recaptcha/api/siteverify",
+    null,
+    {
+      params: {
+        secret: secretKey,
+        response: token,
+      },
+    }
+  );
+
+  const { success, score } = response.data;
+  if (!success) {
+    throw new Error("reCAPTCHA verification failed");
+  }
+
+  const SCORE_THRESHOLD = 0.5;
+  if (score < SCORE_THRESHOLD) {
+    throw new Error("reCAPTCHA score too low. Possible bot detected.");
+  }
+
+  return true;
+}
+
 export async function POST(request: NextRequest) {
   try {
-    // Get form data from the request
     const formData = await request.formData();
-    
-    // Convert FormData to a plain object
+
     const data = {
-      name: formData.get('name') as string,
-      email: formData.get('email') as string,
-    //   city: formData.get('city') as string,
-      state: formData.get('state') as string,
-      country: formData.get('country') as string,
-      phone: formData.get('phone') as string,
-      address: formData.get('address') as string,
-      youtubeLink: formData.get('youtubeLink') as string,
+      name: formData.get("name") as string,
+      email: formData.get("email") as string | undefined,
+      phone: formData.get("phone") as string,
+      address: formData.get("address") as string,
+      youtubeLink: formData.get("youtubeLink") as string,
+      recaptchaToken: formData.get("recaptchaToken") as string,
     };
 
-    console.log('Received form data:', data);
+    // Ensure required fields aren’t null or empty
+    if (!data.name || data.name === "") {
+      throw new Error("Name is required");
+    }
+    if (!data.phone || data.phone === "") {
+      throw new Error("Phone number is required");
+    }
+    if (!data.address || data.address === "") {
+      throw new Error("Address is required");
+    }
+    if (!data.youtubeLink || data.youtubeLink === "") {
+      throw new Error("YouTube link is required");
+    }
+    if (!data.recaptchaToken || data.recaptchaToken === "") {
+      throw new Error("reCAPTCHA token is missing");
+    }
 
-    // Validate data
+    // Handle blank email explicitly
+    if (data.email === "" || data.email === null) {
+      data.email = undefined;
+    }
+
+    // Verify reCAPTCHA
+    await verifyRecaptcha(data.recaptchaToken);
+
+    // Validate the data with the schema
     const validatedData = formSchema.parse(data);
 
-    // Check if the user already exists
     const existingUser = await prisma.user.findUnique({
-      where: { email: validatedData.email },
+      where: { phone: validatedData.phone },
     });
-
-    // apply on phone also 
-    // aslo email make opttional and validate by phone (compulsory)
-
 
     if (existingUser) {
       return NextResponse.json(
-        { success: false, message: 'User with this email already exists' },
+        { success: false, message: "User with this phone number already exists" },
         { status: 400 }
       );
     }
 
-    // Save to database
     const newUser = await prisma.user.create({
-      data: validatedData,
+      data: {
+        ...validatedData,
+        email: validatedData.email || null, // Convert undefined to null for Prisma
+      },
     });
 
-    console.log('User created successfully:', newUser);
+    console.log("User created successfully:", newUser);
 
-    // Return success response
     return NextResponse.json(
-      { 
-        success: true, 
-        message: 'Registration successful!',
-        user: { id: newUser.id, name: newUser.name, email: newUser.email }
+      {
+        success: true,
+        message: "Registration successful!",
+        user: { id: newUser.id, name: newUser.name, email: newUser.email },
       },
       { status: 201 }
     );
   } catch (error) {
-    console.error('Error in registration API:', error);
-    
+    console.error("Error in registration API:", error);
+
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         { success: false, message: `Validation error: ${error.errors[0].message}` },
@@ -80,7 +131,13 @@ export async function POST(request: NextRequest) {
     }
 
     return NextResponse.json(
-      { success: false, message: 'An error occurred while processing your request' },
+      {
+        success: false,
+        message:
+          error instanceof Error
+            ? error.message
+            : "An error occurred while processing your request",
+      },
       { status: 500 }
     );
   }

@@ -1,6 +1,5 @@
 "use client";
 import Banner from "@/components/Banner";
-import RegistrationForm from "@/components/RegistrationForm";
 import FeatureCards from "@/components/FeatureCards";
 
 export default function Home() {

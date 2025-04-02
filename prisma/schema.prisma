@@ -14,18 +14,16 @@ datasource db {
 }
 
 
-// User model based on the form fields
+
 model User {
-  id         Int      @id @default(autoincrement()) // Primary key, auto-incremented
+  id         Int      @id @default(autoincrement()) // Primary key
   name       String   
-  email      String   @unique 
-  // city       String   
-  state      String   
-  country    String   
-  phone      String   
+  email      String?   @unique 
+  phone      String   @unique
   address    String  
   youtubeLink String   
   createdAt  DateTime @default(now()) 
   updatedAt  DateTime @updatedAt 
+  isSelected Boolean  @default(false) 
 }
 

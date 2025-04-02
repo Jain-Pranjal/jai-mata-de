@@ -1,136 +1,128 @@
 
-"use client"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-import * as z from "zod"
-import { Check, ChevronsUpDown } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command"
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
-import { cn } from "@/lib/utils"
-import { toast } from "sonner"
-import { useState } from "react"
 
-const countries = [
-  { label: "India", value: "india" },
-]
+"use client";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import * as z from "zod";
+import { Button } from "@/components/ui/button";
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { toast } from "sonner";
+import { useState, useEffect } from "react";
 
-const indianStates = [
-  { label: "Andhra Pradesh", value: "andhra_pradesh" },
-  { label: "Arunachal Pradesh", value: "arunachal_pradesh" },
-  { label: "Assam", value: "assam" },
-  { label: "Bihar", value: "bihar" },
-  { label: "Chhattisgarh", value: "chhattisgarh" },
-  { label: "Goa", value: "goa" },
-  { label: "Gujarat", value: "gujarat" },
-  { label: "Haryana", value: "haryana" },
-  { label: "Himachal Pradesh", value: "himachal_pradesh" },
-  { label: "Jharkhand", value: "jharkhand" },
-  { label: "Karnataka", value: "karnataka" },
-  { label: "Kerala", value: "kerala" },
-  { label: "Madhya Pradesh", value: "madhya_pradesh" },
-  { label: "Maharashtra", value: "maharashtra" },
-  { label: "Manipur", value: "manipur" },
-  { label: "Meghalaya", value: "meghalaya" },
-  { label: "Mizoram", value: "mizoram" },
-  { label: "Nagaland", value: "nagaland" },
-  { label: "Odisha", value: "odisha" },
-  { label: "Punjab", value: "punjab" },
-  { label: "Rajasthan", value: "rajasthan" },
-  { label: "Sikkim", value: "sikkim" },
-  { label: "Tamil Nadu", value: "tamil_nadu" },
-  { label: "Telangana", value: "telangana" },
-  { label: "Tripura", value: "tripura" },
-  { label: "Uttar Pradesh", value: "uttar_pradesh" },
-  { label: "Uttarakhand", value: "uttarakhand" },
-  { label: "West Bengal", value: "west_bengal" },
-  { label: "Andaman and Nicobar Islands", value: "andaman_nicobar" },
-  { label: "Chandigarh", value: "chandigarh" },
-  { label: "Dadra and Nagar Haveli and Daman and Diu", value: "dadra_nagar_haveli_daman_diu" },
-  { label: "Delhi", value: "delhi" },
-  { label: "Jammu and Kashmir", value: "jammu_kashmir" },
-  { label: "Ladakh", value: "ladakh" },
-  { label: "Lakshadweep", value: "lakshadweep" },
-  { label: "Puducherry", value: "puducherry" },
-];
+// Load reCAPTCHA v3 script globally
+declare global {
+  interface Window {
+    grecaptcha: {
+      ready: (callback: () => void) => void;
+      execute: (siteKey: string, options: { action: string }) => Promise<string>;
+    };
+  }
+}
 
 const formSchema = z.object({
-  name: z.string().min(2, {
-    message: "Name must be at least 2 characters.",
-  }),
-  email: z.string().email({
-    message: "Please enter a valid email address.",
-  }),
-//   city: z.string().min(2, {
-//     message: "City must be at least 2 characters.",
-//   }),
-  state: z.string({
-    required_error: "Please select a state.",
-  }),
-  country: z.string({
-    required_error: "Please select a country.",
-  }),
-  phone: z.string().min(10, {
-    message: "Phone number must be at least 10 digits.",
-  }),
-  address: z.string().min(5, {
-    message: "Address must be at least 5 characters.",
-  }),
-  youtubeLink: z.string().url({
-    message: "Please enter a valid YouTube URL.",
-  })
+  name: z.string().min(2, { message: "Name must be at least 2 characters." }),
+  email: z
+    .string()
+    .optional()
+    .transform((val) => (val === "" ? undefined : val))
+    .refine((val) => !val || z.string().email().safeParse(val).success, {
+      message: "Please enter a valid email address.",
+    }),
+  phone: z
+    .string()
+    .length(10, { message: "Phone number must be exactly 10 digits." })
+    .regex(/^\d{10}$/, { message: "Phone number must contain only digits." }),
+  address: z.string().min(5, { message: "Address must be at least 5 characters." }),
+  youtubeLink: z.string().url({ message: "Please enter a valid YouTube URL." }),
 });
 
 export default function RegistrationForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  
+  const [recaptchaLoaded, setRecaptchaLoaded] = useState(false);
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
-      email: "",
-    //   city: "",
-      state: "",
-      country: "",
+      email: undefined,
       phone: "",
       address: "",
       youtubeLink: "",
     },
   });
 
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = `https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`;
+    script.async = true;
+    script.onload = () => setRecaptchaLoaded(true);
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+
+  async function getRecaptchaToken(): Promise<string> {
+    return new Promise((resolve, reject) => {
+      if (!recaptchaLoaded || !window.grecaptcha) {
+        reject(new Error("reCAPTCHA not loaded"));
+        return;
+      }
+      window.grecaptcha.ready(() => {
+        window.grecaptcha
+          .execute(process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!, {
+            action: "submit_registration",
+          })
+          .then((token) => resolve(token))
+          .catch((error) => reject(error));
+      });
+    });
+  }
+
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
       setIsSubmitting(true);
-      
-      // Create FormData object manually
+
+      const recaptchaToken = await getRecaptchaToken();
+
       const formData = new FormData();
       Object.entries(values).forEach(([key, value]) => {
-        formData.append(key, value);
+        if (value !== undefined) {
+          formData.append(key, value);
+        }
       });
-      
-      const response = await fetch('/api/register', {
-        method: 'POST',
+      formData.append("recaptchaToken", recaptchaToken);
+
+      const response = await fetch("/api/register", {
+        method: "POST",
         body: formData,
       });
-      
+
       if (!response.ok) {
         const errorData = await response.json();
         throw new Error(errorData.message || "Failed to submit form");
       }
-      
+
       toast.success("Registration Successful!", {
         description: "Thank you for registering with us.",
       });
-      
-      // Reset form on success
+
       form.reset();
     } catch (error) {
-
       toast.error("Registration failed. Please try again.", {
-        description: error instanceof Error ? error.message : "Unknown error occurred",
+        description:
+          error instanceof Error ? error.message : "Unknown error occurred",
       });
     } finally {
       setIsSubmitting(false);
@@ -141,7 +133,6 @@ export default function RegistrationForm() {
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Name Field */}
           <FormField
             control={form.control}
             name="name"
@@ -160,7 +151,6 @@ export default function RegistrationForm() {
             )}
           />
 
-          {/* Email Field */}
           <FormField
             control={form.control}
             name="email"
@@ -171,6 +161,10 @@ export default function RegistrationForm() {
                   <Input
                     placeholder="Enter your email"
                     {...field}
+                    value={field.value ?? ""}
+                    onChange={(e) =>
+                      field.onChange(e.target.value || undefined)
+                    }
                     className="bg-white/20 text-white placeholder:text-gray-300"
                   />
                 </FormControl>
@@ -179,120 +173,6 @@ export default function RegistrationForm() {
             )}
           />
 
-          {/* Country Dropdown */}
-          <FormField
-            control={form.control}
-            name="country"
-            render={({ field }) => (
-              <FormItem className="flex flex-col">
-                <FormLabel className="text-white">Country</FormLabel>
-                <Popover>
-                  <PopoverTrigger asChild>
-                    <FormControl>
-                      <Button
-                        variant="outline"
-                        role="combobox"
-                        type="button"
-                        className={cn(
-                          "justify-between bg-white/20 text-white placeholder:text-gray-300",
-                          !field.value && "text-gray-300",
-                        )}
-                      >
-                        {field.value
-                          ? countries.find((country) => country.value === field.value)?.label
-                          : "Select country"}
-                        <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-                      </Button>
-                    </FormControl>
-                  </PopoverTrigger>
-                  <PopoverContent className="w-full p-0">
-                    <Command>
-                      <CommandInput placeholder="Search country..." />
-                      <CommandList>
-                        <CommandEmpty>No country found.</CommandEmpty>
-                        <CommandGroup className="max-h-60 overflow-y-auto">
-                          {countries.map((country) => (
-                            <CommandItem
-                              key={country.value}
-                              value={country.value}
-                              onSelect={() => {
-                                form.setValue("country", country.value);
-                              }}
-                            >
-                              <Check
-                                className={cn(
-                                  "mr-2 h-4 w-4",
-                                  country.value === field.value ? "opacity-100" : "opacity-0",
-                                )}
-                              />
-                              {country.label}
-                            </CommandItem>
-                          ))}
-                        </CommandGroup>
-                      </CommandList>
-                    </Command>
-                  </PopoverContent>
-                </Popover>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          {/* State Dropdown */}
-          <FormField
-            control={form.control}
-            name="state"
-            render={({ field }) => (
-              <FormItem className="flex flex-col">
-                <FormLabel className="text-white">State</FormLabel>
-                <Popover>
-                  <PopoverTrigger asChild>
-                    <FormControl>
-                      <Button
-                        variant="outline"
-                        role="combobox"
-                        type="button"
-                        className={cn(
-                          "justify-between bg-white/20 text-white placeholder:text-gray-300",
-                          !field.value && "text-gray-300",
-                        )}
-                      >
-                        {field.value ? indianStates.find((state) => state.value === field.value)?.label : "Select state"}
-                        <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-                      </Button>
-                    </FormControl>
-                  </PopoverTrigger>
-                  <PopoverContent className="w-full p-0">
-                    <Command>
-                      <CommandInput placeholder="Search state..." />
-                      <CommandList>
-                        <CommandEmpty>No state found.</CommandEmpty>
-                        <CommandGroup className="max-h-60 overflow-y-auto">
-                          {indianStates.map((state) => (
-                            <CommandItem
-                              key={state.value}
-                              value={state.value}
-                              onSelect={() => {
-                                form.setValue("state", state.value);
-                              }}
-                            >
-                              <Check
-                                className={cn("mr-2 h-4 w-4", state.value === field.value ? "opacity-100" : "opacity-0")}
-                              />
-                              {state.label}
-                            </CommandItem>
-                          ))}
-                        </CommandGroup>
-                      </CommandList>
-                    </Command>
-                  </PopoverContent>
-                </Popover>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          {/* Phone Field */}
           <FormField
             control={form.control}
             name="phone"
@@ -312,7 +192,6 @@ export default function RegistrationForm() {
           />
         </div>
 
-        {/* Address Field */}
         <FormField
           control={form.control}
           name="address"
@@ -331,7 +210,6 @@ export default function RegistrationForm() {
           )}
         />
 
-        {/* YouTube Link Field */}
         <FormField
           control={form.control}
           name="youtubeLink"
@@ -346,7 +224,7 @@ export default function RegistrationForm() {
                 />
               </FormControl>
               <FormDescription className="text-gray-300">
-                Share a YouTube video link related to your submission 
+                Share a YouTube video link related to your submission
               </FormDescription>
               <FormMessage />
             </FormItem>
@@ -355,13 +233,12 @@ export default function RegistrationForm() {
 
         <Button
           type="submit"
-          disabled={isSubmitting}
+          disabled={isSubmitting || !recaptchaLoaded}
           className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold py-3 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105"
         >
           {isSubmitting ? "Submitting..." : "Submit Registration"}
         </Button>
       </form>
     </Form>
-  )
+  );
 }
-

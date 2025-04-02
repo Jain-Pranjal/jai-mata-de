@@ -1,5 +1,3 @@
-
-
 "use client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -33,9 +31,9 @@ const formSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
   email: z
     .string()
-    .optional()
-    .transform((val) => (val === "" ? undefined : val))
-    .refine((val) => !val || z.string().email().safeParse(val).success, {
+    .nullable() // Allow null instead of optional()
+    .transform((val) => (val === "" ? null : val)) // Convert empty string to null
+    .refine((val) => val === null || z.string().email().safeParse(val).success, {
       message: "Please enter a valid email address.",
     }),
   phone: z
@@ -54,7 +52,7 @@ export default function RegistrationForm() {
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
-      email: undefined,
+      email: null, // Use null instead of undefined
       phone: "",
       address: "",
       youtubeLink: "",
@@ -98,7 +96,7 @@ export default function RegistrationForm() {
 
       const formData = new FormData();
       Object.entries(values).forEach(([key, value]) => {
-        if (value !== undefined) {
+        if (value !== null) { // Only append if not null (null is valid for email)
           formData.append(key, value);
         }
       });
@@ -161,9 +159,9 @@ export default function RegistrationForm() {
                   <Input
                     placeholder="Enter your email"
                     {...field}
-                    value={field.value ?? ""}
+                    value={field.value ?? ""} // Display empty string if null
                     onChange={(e) =>
-                      field.onChange(e.target.value || undefined)
+                      field.onChange(e.target.value === "" ? null : e.target.value) // Set null if empty
                     }
                     className="bg-white/20 text-white placeholder:text-gray-300"
                   />

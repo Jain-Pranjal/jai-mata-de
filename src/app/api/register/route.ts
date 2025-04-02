@@ -1,4 +1,3 @@
-
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import prisma from "@/lib/db";
@@ -8,9 +7,9 @@ const formSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
   email: z
     .string()
-    .optional()
-    .transform((val) => (val === "" ? undefined : val)) // Convert empty string to undefined
-    .refine((val) => !val || z.string().email().safeParse(val).success, {
+    .nullable() // Allow null instead of optional()
+    .transform((val) => (val === "" ? null : val)) // Convert empty string to null
+    .refine((val) => val === null || z.string().email().safeParse(val).success, {
       message: "Please enter a valid email address.",
     }),
   phone: z
@@ -57,7 +56,7 @@ export async function POST(request: NextRequest) {
 
     const data = {
       name: formData.get("name") as string,
-      email: formData.get("email") as string | undefined,
+      email: formData.get("email") as string | null, // Expect null for email
       phone: formData.get("phone") as string,
       address: formData.get("address") as string,
       youtubeLink: formData.get("youtubeLink") as string,
@@ -81,11 +80,6 @@ export async function POST(request: NextRequest) {
       throw new Error("reCAPTCHA token is missing");
     }
 
-    // Handle blank email explicitly
-    if (data.email === "" || data.email === null) {
-      data.email = undefined;
-    }
-
     // Verify reCAPTCHA
     await verifyRecaptcha(data.recaptchaToken);
 
@@ -104,10 +98,7 @@ export async function POST(request: NextRequest) {
     }
 
     const newUser = await prisma.user.create({
-      data: {
-        ...validatedData,
-        email: validatedData.email || null, // Convert undefined to null for Prisma
-      },
+      data: validatedData, // No conversion needed, email is already null if blank
     });
 
     console.log("User created successfully:", newUser);

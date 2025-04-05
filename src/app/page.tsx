@@ -1,5 +1,6 @@
 "use client";
 import Banner from "@/components/Banner";
+import EventsCarousel from "@/components/EventCarousel";
 import FeatureCards from "@/components/FeatureCards";
 
 export default function Home() {
@@ -13,6 +14,7 @@ export default function Home() {
         <div className="mt-5 ">
           <FeatureCards />
         </div>
+        <EventsCarousel />
       </div>
 
   );
@@ -21,9 +23,10 @@ export default function Home() {
 
 
 // apply the slider to show all the days details 
-// adding column seelectted and not slecteed (for filtering reecorrds on db )
-// change in the contest tab :- contetst and regisraiton below it 
+// adding column seelectted and not slecteed (for filtering reecorrds on db )  done
+// change in the contest tab :- contetst and regisraiton below it   donee
 
-// name email phone address + backedn (selected )
+// name email phone address + backedn (selected )  done
+// addede the captcha also 
 
-// move the rgistration form to the contest one page and then show the winnerr of it
+// move the rgistration form to the contest one page and then show the winnerr of it  done

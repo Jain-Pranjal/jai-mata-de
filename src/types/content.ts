@@ -117,3 +117,14 @@ export interface NotFoundContent {
   buttonText: string; 
 }
 
+
+export interface NavratriEvent {
+  id: number;
+  // isToday: boolean;
+  date: string;
+  day: string;
+  color: string;
+  gradientColor: string;
+  description: string;
+}
+

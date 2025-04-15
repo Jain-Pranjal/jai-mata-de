@@ -5,29 +5,30 @@ import Image from "next/image"
 
 const features = [
   {
-    title: "Banshankari",
-    link: "/banshankari",
-    imageSrc: "/bhura.png", // Replace with actual image path
+    title: "Shri Shakumbhari Devi",
+    link: "/shri-shakumbhari-devi",
+    imageSrc: "/home.png",
+    altText: "Shakumbhari Devi"
+  },
+  {
+    title: "Shri Banshankari",
+    link: "/banashankari",
+    imageSrc: "/banashankari.png", // Replace with actual image path
     altText: "Banshankari Temple"
   },
   {
-    title: "Temple Navigation",
-    link: "/navigation",
-    imageSrc: "/bhura.png", // Replace with actual image path
-    altText: "Temple Map"
+    title: "Sakrai Dham",
+    link: "/sakrai-dham",
+    imageSrc: "/sakraiDham.png", // Replace with actual image path
+    altText: "Sakrai Dham"
   },
   {
-    title: "Temple Events",
-    link: "/mela",
+    title: "Bhura Dev",
+    link: "/bhura-dev",
     imageSrc: "/bhura.png", // Replace with actual image path
-    altText: "Temple Festival"
+    altText: "Bhura Dev"
   },
-  {
-    title: "Sacred Chants",
-    link: "/aarti",
-    imageSrc: "/bhura.png", // Replace with actual image path
-    altText: "Sacred Chants"
-  }
+  
 ]
 
 export default function FeatureCards() {

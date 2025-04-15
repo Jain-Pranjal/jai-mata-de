@@ -19,6 +19,8 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Jai Mata Di",
   description: "A website dedicated to the worship of Goddess Shakumbhari Devi",
+
+
 };
 
 export default function RootLayout({
@@ -28,6 +30,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <LanguagePopup />
         <Navbar />

@@ -5,7 +5,7 @@ export const navratriEventsContent: Record<Language, NavratriEvent[]> = {
   english: [
     {
       id: 1,
-      date: "March 30, 2025",
+      date: "September 22, 2025",
       day: "Maa Shailputri",
       color: "Orange",
       gradientColor: "from-orange-500 to-amber-500",
@@ -13,7 +13,7 @@ export const navratriEventsContent: Record<Language, NavratriEvent[]> = {
     },
     {
       id: 2,
-      date: "March 31, 2025",
+      date: "September 23, 2025",
       day: "Maa Brahmacharini",
       color: "White",
       gradientColor: "from-gray-200 to-gray-300",
@@ -21,7 +21,7 @@ export const navratriEventsContent: Record<Language, NavratriEvent[]> = {
     },
     {
       id: 3,
-      date: "April 1, 2025",
+      date: "September 24, 2025",
       day: "Maa Chandraghanta",
       color: "Red",
       gradientColor: "from-red-500 to-rose-500",
@@ -29,7 +29,7 @@ export const navratriEventsContent: Record<Language, NavratriEvent[]> = {
     },
     {
       id: 4,
-      date: "April 2, 2025",
+      date: "September 25, 2025",
       day: "Maa Kushmanda",
       color: "Royal Blue",
       gradientColor: "from-blue-600 to-indigo-600",
@@ -37,7 +37,7 @@ export const navratriEventsContent: Record<Language, NavratriEvent[]> = {
     },
     {
       id: 5,
-      date: "April 3, 2025",
+      date: "September 26, 2025",
       day: "Maa Skandamata",
       color: "Yellow",
       gradientColor: "from-yellow-400 to-amber-400",
@@ -45,7 +45,7 @@ export const navratriEventsContent: Record<Language, NavratriEvent[]> = {
     },
     {
       id: 6,
-      date: "April 4, 2025",
+      date: "September 27, 2025",
       day: "Maa Katyayani",
       color: "Green",
       gradientColor: "from-green-500 to-emerald-500",
@@ -53,7 +53,7 @@ export const navratriEventsContent: Record<Language, NavratriEvent[]> = {
     },
     {
       id: 7,
-      date: "April 5, 2025",
+      date: "September 28, 2025",
       day: "Maa Kaalratri",
       color: "Grey",
       gradientColor: "from-gray-600 to-gray-700",
@@ -61,7 +61,7 @@ export const navratriEventsContent: Record<Language, NavratriEvent[]> = {
     },
     {
       id: 8,
-      date: "April 6, 2025",
+      date: "September 29, 2025",
       day: "Maa Maha Gauri",
       color: "Purple",
       gradientColor: "from-purple-500 to-violet-500",
@@ -69,7 +69,7 @@ export const navratriEventsContent: Record<Language, NavratriEvent[]> = {
     },
     {
       id: 9,
-      date: "April 7, 2025",
+      date: "September 30, 2025",
       day: "Maa Siddhidatri",
       color: "Peacock Green",
       gradientColor: "from-teal-500 to-cyan-500",
@@ -79,7 +79,7 @@ export const navratriEventsContent: Record<Language, NavratriEvent[]> = {
   hindi: [
     {
       id: 1,
-      date: "30 मार्च, 2025",
+      date: "22 सितम्बर, 2025",
       day: "माँ शैलपुत्री",
       color: "Orange",
       gradientColor: "from-orange-500 to-amber-500",
@@ -87,7 +87,7 @@ export const navratriEventsContent: Record<Language, NavratriEvent[]> = {
     },
     {
       id: 2,
-      date: "31 मार्च, 2025",
+      date: "23 सितम्बर, 2025",
       day: "माँ ब्रह्मचारिणी",
       color: "White",
       gradientColor: "from-gray-200 to-gray-300",
@@ -95,7 +95,7 @@ export const navratriEventsContent: Record<Language, NavratriEvent[]> = {
     },
     {
       id: 3,
-      date: "1 अप्रैल, 2025",
+      date: "24 सितम्बर, 2025",
       day: "माँ चंद्रघंटा",
       color: "Red",
       gradientColor: "from-red-500 to-rose-500",
@@ -103,7 +103,7 @@ export const navratriEventsContent: Record<Language, NavratriEvent[]> = {
     },
     {
       id: 4,
-      date: "2 अप्रैल, 2025",
+      date: "25 सितम्बर, 2025",
       day: "माँ कुष्मांडा",
       color: "Royal Blue",
       gradientColor: "from-blue-600 to-indigo-600",
@@ -111,7 +111,7 @@ export const navratriEventsContent: Record<Language, NavratriEvent[]> = {
     },
     {
       id: 5,
-      date: "3 अप्रैल, 2025",
+      date: "26 सितम्बर, 2025",
       day: "माँ स्कंदमाता",
       color: "Yellow",
       gradientColor: "from-yellow-400 to-amber-400",
@@ -119,7 +119,7 @@ export const navratriEventsContent: Record<Language, NavratriEvent[]> = {
     },
     {
       id: 6,
-      date: "4 अप्रैल, 2025",
+      date: "27 सितम्बर, 2025",
       day: "माँ कात्यायनी",
       color: "Green",
       gradientColor: "from-green-500 to-emerald-500",
@@ -127,7 +127,7 @@ export const navratriEventsContent: Record<Language, NavratriEvent[]> = {
     },
     {
       id: 7,
-      date: "5 अप्रैल, 2025",
+      date: "28 सितम्बर, 2025",
       day: "माँ कालरात्रि",
       color: "Grey",
       gradientColor: "from-gray-600 to-gray-700",
@@ -135,7 +135,7 @@ export const navratriEventsContent: Record<Language, NavratriEvent[]> = {
     },
     {
       id: 8,
-      date: "6 अप्रैल, 2025",
+      date: "29 सितम्बर, 2025",
       day: "माँ महागौरी",
       color: "Purple",
       gradientColor: "from-purple-500 to-violet-500",
@@ -143,7 +143,7 @@ export const navratriEventsContent: Record<Language, NavratriEvent[]> = {
     },
     {
       id: 9,
-      date: "7 अप्रैल, 2025",
+      date: "30 सितम्बर, 2025",
       day: "माँ सिद्धिदात्री",
       color: "Peacock Green",
       gradientColor: "from-teal-500 to-cyan-500",
@@ -153,7 +153,7 @@ export const navratriEventsContent: Record<Language, NavratriEvent[]> = {
   tamil: [
     {
       id: 1,
-      date: "30 மார்ச், 2025",
+      date: "22 செப்டம்பர், 2025",
       day: "மா சைலபுத்ரி",
       color: "Orange",
       gradientColor: "from-orange-400 to-amber-500",
@@ -161,7 +161,7 @@ export const navratriEventsContent: Record<Language, NavratriEvent[]> = {
     },
     {
       id: 2,
-      date: "31 மார்ச், 2025",
+      date: "23 செப்டம்பர், 2025",
       day: "மா ப்ரஹ்மசாரிணி",
       color: "White",
       gradientColor: "from-white to-gray-200",
@@ -169,7 +169,7 @@ export const navratriEventsContent: Record<Language, NavratriEvent[]> = {
     },
     {
       id: 3,
-      date: "1 ஏப்ரல், 2025",
+      date: "24 செப்டம்பர், 2025",
       day: "மா சந்திரகண்டா",
       color: "Red",
       gradientColor: "from-red-500 to-rose-500",
@@ -177,7 +177,7 @@ export const navratriEventsContent: Record<Language, NavratriEvent[]> = {
     },
     {
       id: 4,
-      date: "2 ஏப்ரல், 2025",
+      date: "25 செப்டம்பர், 2025",
       day: "மா குஷ்மாண்டா",
       color: "Royal Blue",
       gradientColor: "from-blue-700 to-indigo-700",
@@ -185,7 +185,7 @@ export const navratriEventsContent: Record<Language, NavratriEvent[]> = {
     },
     {
       id: 5,
-      date: "3 ஏப்ரல், 2025",
+      date: "26 செப்டம்பர், 2025",
       day: "மா ஸ்கந்தமாதா",
       color: "Yellow",
       gradientColor: "from-yellow-400 to-amber-400",
@@ -193,7 +193,7 @@ export const navratriEventsContent: Record<Language, NavratriEvent[]> = {
     },
     {
       id: 6,
-      date: "4 ஏப்ரல், 2025",
+      date: "27 செப்டம்பர், 2025",
       day: "மா காத்தியாயினி",
       color: "Green",
       gradientColor: "from-green-500 to-emerald-500",
@@ -201,7 +201,7 @@ export const navratriEventsContent: Record<Language, NavratriEvent[]> = {
     },
     {
       id: 7,
-      date: "5 ஏப்ரல், 2025",
+      date: "28 செப்டம்பர், 2025",
       day: "மா காலராத்திரி",
       color: "Grey",
       gradientColor: "from-gray-600 to-gray-700",
@@ -209,7 +209,7 @@ export const navratriEventsContent: Record<Language, NavratriEvent[]> = {
     },
     {
       id: 8,
-      date: "6 ஏப்ரல், 2025",
+      date: "29 செப்டம்பர், 2025",
       day: "மா மகாகௌரி",
       color: "Purple",
       gradientColor: "from-purple-500 to-violet-500",
@@ -217,7 +217,7 @@ export const navratriEventsContent: Record<Language, NavratriEvent[]> = {
     },
     {
       id: 9,
-      date: "7 ஏப்ரல், 2025",
+      date: "30 செப்டம்பர், 2025",
       day: "மா சித்திதாத்திரி",
       color: "Peacock Green",
       gradientColor: "from-teal-500 to-cyan-500",
@@ -227,7 +227,7 @@ export const navratriEventsContent: Record<Language, NavratriEvent[]> = {
   telugu: [
     {
       id: 1,
-      date: "మార్చి 30, 2025",
+      date: "సెప్టెంబర్ 22, 2025",
       day: "మా శైలపుత్రి",
       color: "Orange",
       gradientColor: "from-orange-500 to-amber-500",
@@ -235,7 +235,7 @@ export const navratriEventsContent: Record<Language, NavratriEvent[]> = {
     },
     {
       id: 2,
-      date: "మార్చి 31, 2025",
+      date: "సెప్టెంబర్ 23, 2025",
       day: "మా బ్రహ్మచారిణి",
       color: "White",
       gradientColor: "from-gray-200 to-gray-300",
@@ -243,7 +243,7 @@ export const navratriEventsContent: Record<Language, NavratriEvent[]> = {
     },
     {
       id: 3,
-      date: "ఏప్రిల్ 1, 2025",
+      date: "సెప్టెంబర్ 24, 2025",
       day: "మా చంద్రఘంటా",
       color: "Red",
       gradientColor: "from-red-500 to-rose-500",
@@ -251,7 +251,7 @@ export const navratriEventsContent: Record<Language, NavratriEvent[]> = {
     },
     {
       id: 4,
-      date: "ఏప్రిల్ 2, 2025",
+      date: "సెప్టెంబర్ 25, 2025",
       day: "మా కుష్మాండా",
       color: "Royal Blue",
       gradientColor: "from-blue-600 to-indigo-600",
@@ -259,7 +259,7 @@ export const navratriEventsContent: Record<Language, NavratriEvent[]> = {
     },
     {
       id: 5,
-      date: "ఏప్రిల్ 3, 2025",
+      date: "సెప్టెంబర్ 26, 2025",
       day: "మా స్కందమాత",
       color: "Yellow",
       gradientColor: "from-yellow-400 to-amber-400",
@@ -267,7 +267,7 @@ export const navratriEventsContent: Record<Language, NavratriEvent[]> = {
     },
     {
       id: 6,
-      date: "ఏప్రిల్ 4, 2025",
+      date: "సెప్టెంబర్ 27, 2025",
       day: "మా కాత్యాయిని",
       color: "Green",
       gradientColor: "from-green-500 to-emerald-500",
@@ -275,7 +275,7 @@ export const navratriEventsContent: Record<Language, NavratriEvent[]> = {
     },
     {
       id: 7,
-      date: "ఏప్రిల్ 5, 2025",
+      date: "సెప్టెంబర్ 28, 2025",
       day: "మా కాలరాత్రి",
       color: "Grey",
       gradientColor: "from-gray-600 to-gray-700",
@@ -283,7 +283,7 @@ export const navratriEventsContent: Record<Language, NavratriEvent[]> = {
     },
     {
       id: 8,
-      date: "ఏప్రిల్ 6, 2025",
+      date: "సెప్టెంబర్ 29, 2025",
       day: "మా మహాగౌరి",
       color: "Purple",
       gradientColor: "from-purple-500 to-violet-500",
@@ -291,7 +291,7 @@ export const navratriEventsContent: Record<Language, NavratriEvent[]> = {
     },
     {
       id: 9,
-      date: "ఏప్రిల్ 7, 2025",
+      date: "సెప్టెంబర్ 30, 2025",
       day: "మా సిద్ధిదాత్రీ",
       color: "Peacock Green",
       gradientColor: "from-teal-500 to-cyan-500",
@@ -301,7 +301,7 @@ export const navratriEventsContent: Record<Language, NavratriEvent[]> = {
   kannada: [
     {
       id: 1,
-      date: "ಮಾರ್ಚ್ 30, 2025",
+      date: "ಸೆಪ್ಟೆಂಬರ್ 22, 2025",
       day: "ಮಾ ಶೈಲಪುತ್ರಿ",
       color: "Orange",
       gradientColor: "from-orange-500 to-amber-500",
@@ -309,7 +309,7 @@ export const navratriEventsContent: Record<Language, NavratriEvent[]> = {
     },
     {
       id: 2,
-      date: "ಮಾರ್ಚ್ 31, 2025",
+      date: "ಸೆಪ್ಟೆಂಬರ್ 23, 2025",
       day: "ಮಾ ಬ್ರಹ್ಮಚಾರಿಣಿ",
       color: "White",
       gradientColor: "from-gray-200 to-gray-300",
@@ -317,7 +317,7 @@ export const navratriEventsContent: Record<Language, NavratriEvent[]> = {
     },
     {
       id: 3,
-      date: "ಏಪ್ರಿಲ್ 1, 2025",
+      date: "ಸೆಪ್ಟೆಂಬರ್ 24, 2025",
       day: "ಮಾ ಚಂದ್ರಘಂಟಾ",
       color: "Red",
       gradientColor: "from-red-500 to-rose-500",
@@ -325,7 +325,7 @@ export const navratriEventsContent: Record<Language, NavratriEvent[]> = {
     },
     {
       id: 4,
-      date: "ಏಪ್ರಿಲ್ 2, 2025",
+      date: "ಸೆಪ್ಟೆಂಬರ್ 25, 2025",
       day: "ಮಾ ಕುಷ್ಮಾಂಡಾ",
       color: "Royal Blue",
       gradientColor: "from-blue-600 to-indigo-600",
@@ -333,7 +333,7 @@ export const navratriEventsContent: Record<Language, NavratriEvent[]> = {
     },
     {
       id: 5,
-      date: "ಏಪ್ರಿಲ್ 3, 2025",
+      date: "ಸೆಪ್ಟೆಂಬರ್ 26, 2025",
       day: "ಮಾ ಸ್ಕಂದಮಾತಾ",
       color: "Yellow",
       gradientColor: "from-yellow-400 to-amber-400",
@@ -341,7 +341,7 @@ export const navratriEventsContent: Record<Language, NavratriEvent[]> = {
     },
     {
       id: 6,
-      date: "ಏಪ್ರಿಲ್ 4, 2025",
+      date: "ಸೆಪ್ಟೆಂಬರ್ 27, 2025",
       day: "ಮಾ ಕಾತ್ಯಾಯಿನಿ",
       color: "Green",
       gradientColor: "from-green-500 to-emerald-500", 
@@ -349,7 +349,7 @@ export const navratriEventsContent: Record<Language, NavratriEvent[]> = {
     },
     {
       id: 7,
-      date: "ಏಪ್ರಿಲ್ 5, 2025",
+      date: "ಸೆಪ್ಟೆಂಬರ್ 28, 2025",
       day: "ಮಾ ಕಾಲರಾತ್ರಿ",
       color: "Grey",
       gradientColor: "from-gray-600 to-gray-700",
@@ -357,7 +357,7 @@ export const navratriEventsContent: Record<Language, NavratriEvent[]> = {
     },
     {
       id: 8,
-      date: "ಏಪ್ರಿಲ್ 6, 2025",
+      date: "ಸೆಪ್ಟೆಂಬರ್ 29, 2025",
       day: "ಮಾ ಮಹಾಗೌರಿ",
       color: "Purple",
       gradientColor: "from-purple-500 to-violet-500",
@@ -365,7 +365,7 @@ export const navratriEventsContent: Record<Language, NavratriEvent[]> = {
     },
     {
       id: 9,
-      date: "ಏಪ್ರಿಲ್ 7, 2025",
+      date: "ಸೆಪ್ಟೆಂಬರ್ 30, 2025",
       day: "ಮಾ ಸಿದ್ಧಿದಾತ್ರೀ",
       color: "Peacock Green",
       gradientColor: "from-teal-500 to-cyan-500",

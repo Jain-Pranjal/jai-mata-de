@@ -128,3 +128,14 @@ export interface NavratriEvent {
   description: string;
 }
 
+  export interface BanashankariContent {
+    title: string;
+    subtitle: string;
+    paragraphs: string[];
+  }
+  
+  export interface SakraiDhamContent{
+    title: string;
+    subtitle: string;
+    paragraphs: string[];
+  }

@@ -1,29 +1,38 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import Link from "next/link"
-import Image from "next/image"
-import { Menu, Languages, ChevronDown, ChevronRight } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from "@/components/ui/dropdown-menu"
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
-import { useLanguageStore } from "@/store/languageStore"
+import { useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { Menu, Languages, ChevronDown, ChevronRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import {DropdownMenu,DropdownMenuTrigger,DropdownMenuContent,DropdownMenuItem,} from "@/components/ui/dropdown-menu";
+import {Collapsible,CollapsibleContent,CollapsibleTrigger} from "@/components/ui/collapsible";
+import { useLanguageStore } from "@/store/languageStore";
 
 // Updated routes with dropdown for Shri Shakumbhari Devi
 const routes = [
   { href: "/", label: "Home" },
   {
-    href: "/shri-shakumbhari-devi",
     label: "Shakumbhari Devi Dham",
+    href: "",
     dropdown: true,
     items: [
-      { href: "/shri-shakumbhari-devi/banshankari", label: "Banshankari" },
-      { href: "/shri-shakumbhari-devi/temple1", label: "Temple1" },
-      { href: "/shri-shakumbhari-devi/Temple1", label: "Temple1" },
-
+      {
+        label: "Shri Shakumbhari Devi - Saharanpur",
+        href: "/shri-shakumbhari-devi",
+      },
+      {
+        label: "Sakrai Dham - Sikar",
+        href: "/sakrai-dham",
+      },
+      {
+        label: "Shri Banashankari - Bengaluru",
+        href: "/banashankari",
+      },
     ],
   },
+
   { href: "/bhura-dev", label: "Bhura Dev" },
   { href: "/mata-chinnamasta-devi", label: "Mata Chinnamasta Devi" },
   { href: "/mela", label: "Mela" },
@@ -31,7 +40,7 @@ const routes = [
   { href: "/aarti", label: "Aarti" },
   { href: "/navigation", label: "Navigation" },
   { href: "/contest", label: "Contest" },
-]
+];
 
 const languages = [
   { value: "english", label: "English" },
@@ -39,16 +48,16 @@ const languages = [
   { value: "tamil", label: "தமிழ்" },
   { value: "telugu", label: "తెలుగు" },
   { value: "kannada", label: "ಕನ್ನಡ" },
-]
+];
 
 export function Navbar() {
-  const [isOpen, setIsOpen] = useState(false)
-  const [openCollapsible, setOpenCollapsible] = useState<string | null>(null)
-  const { selectedLanguage, setLanguage } = useLanguageStore()
+  const [isOpen, setIsOpen] = useState(false);
+  const [openCollapsible, setOpenCollapsible] = useState<string | null>(null);
+  const { selectedLanguage, setLanguage } = useLanguageStore();
 
   const toggleCollapsible = (label: string) => {
-    setOpenCollapsible(openCollapsible === label ? null : label)
-  }
+    setOpenCollapsible(openCollapsible === label ? null : label);
+  };
 
   return (
     <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -69,12 +78,7 @@ export function Navbar() {
                   {route.label}
                   <ChevronDown className="h-4 w-4" />
                 </DropdownMenuTrigger>
-                <DropdownMenuContent align="center" className="w-48">
-                  <DropdownMenuItem asChild>
-                    <Link href={route.href} className="w-full">
-                    {route.label}
-                    </Link>
-                  </DropdownMenuItem>
+                <DropdownMenuContent align="center" className="w-64">
                   {route.items?.map((item) => (
                     <DropdownMenuItem key={item.href} asChild>
                       <Link href={item.href} className="w-full">
@@ -92,7 +96,7 @@ export function Navbar() {
               >
                 {route.label}
               </Link>
-            ),
+            )
           )}
           <Link href="/contactus">
             <Button size="sm" className="cursor-pointer">
@@ -112,7 +116,11 @@ export function Navbar() {
                 <DropdownMenuItem
                   key={lang.value}
                   onClick={() => setLanguage(lang.value)}
-                  className={selectedLanguage === lang.value ? "font-bold text-primary" : ""}
+                  className={
+                    selectedLanguage === lang.value
+                      ? "font-bold text-primary"
+                      : ""
+                  }
                 >
                   {lang.label}
                 </DropdownMenuItem>
@@ -130,7 +138,11 @@ export function Navbar() {
           </SheetTrigger>
           <SheetContent side="left" className="w-[240px] sm:w-[300px]">
             <div className="flex flex-col gap-6 py-6">
-              <Link href="/" className="flex items-center gap-2 pl-2" onClick={() => setIsOpen(false)}>
+              <Link
+                href="/"
+                className="flex items-center gap-2 pl-2"
+                onClick={() => setIsOpen(false)}
+              >
                 <Image src="/om.jpg" alt="Logo" width={32} height={32} />
                 <span className="font-bold">Jai Mata Di</span>
               </Link>
@@ -146,17 +158,12 @@ export function Navbar() {
                       <CollapsibleTrigger className="flex w-full items-center  text-sm font-medium text-muted-foreground transition-colors hover:text-primary">
                         {route.label}
                         <ChevronRight
-                          className={`h-4 w-4 transition-transform ${openCollapsible === route.label ? "rotate-90" : ""}`}
+                          className={`h-4 w-4 transition-transform ${
+                            openCollapsible === route.label ? "rotate-90" : ""
+                          }`}
                         />
                       </CollapsibleTrigger>
                       <CollapsibleContent className="pl-4 pt-2">
-                        <Link
-                          href={route.href}
-                          className="block py-1 text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-                          onClick={() => setIsOpen(false)}
-                        >
-                          {route.label}
-                        </Link>
                         {route.items?.map((item) => (
                           <Link
                             key={item.href}
@@ -178,23 +185,33 @@ export function Navbar() {
                     >
                       {route.label}
                     </Link>
-                  ),
+                  )
                 )}
 
                 <Link href="/contactus">
-                  <Button className="mt-2" size="sm" onClick={() => setIsOpen(false)}>
+                  <Button
+                    className="mt-2"
+                    size="sm"
+                    onClick={() => setIsOpen(false)}
+                  >
                     Contact Us
                   </Button>
                 </Link>
 
                 {/* Language Selection in Mobile Menu */}
                 <div className="mt-4">
-                  <p className="text-sm font-medium text-muted-foreground">Select Language:</p>
+                  <p className="text-sm font-medium text-muted-foreground">
+                    Select Language:
+                  </p>
                   <div className="flex flex-wrap gap-2 mt-2">
                     {languages.map((lang) => (
                       <Button
                         key={lang.value}
-                        variant={selectedLanguage === lang.value ? "default" : "outline"}
+                        variant={
+                          selectedLanguage === lang.value
+                            ? "default"
+                            : "outline"
+                        }
                         size="sm"
                         onClick={() => {
                           setLanguage(lang.value);
@@ -212,5 +229,5 @@ export function Navbar() {
         </Sheet>
       </div>
     </nav>
-  )
+  );
 }

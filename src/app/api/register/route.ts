@@ -101,7 +101,7 @@ export async function POST(request: NextRequest) {
       data: validatedData, // No conversion needed, email is already null if blank
     });
 
-    console.log("User created successfully:", newUser);
+    // console.log("User created successfully:", newUser);
 
     return NextResponse.json(
       {

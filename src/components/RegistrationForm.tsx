@@ -42,6 +42,11 @@ const formSchema = z.object({
     .regex(/^\d{10}$/, { message: "Phone number must contain only digits." }),
   address: z.string().min(5, { message: "Address must be at least 5 characters." }),
   youtubeLink: z.string().url({ message: "Please enter a valid YouTube URL." }),
+  termsAccepted: z
+    .boolean()
+    .refine((val) => val === true, {
+      message: "You must accept the terms and conditions.",
+    }),
 });
 
 export default function RegistrationForm() {
@@ -97,7 +102,7 @@ export default function RegistrationForm() {
       const formData = new FormData();
       Object.entries(values).forEach(([key, value]) => {
         if (value !== null) { // Only append if not null (null is valid for email)
-          formData.append(key, value);
+          formData.append(key, String(value));
         }
       });
       formData.append("recaptchaToken", recaptchaToken);
@@ -229,13 +234,39 @@ export default function RegistrationForm() {
           )}
         />
 
-        <Button
-          type="submit"
-          disabled={isSubmitting || !recaptchaLoaded}
-          className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold py-3 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105"
-        >
-          {isSubmitting ? "Submitting..." : "Submit Registration"}
-        </Button>
+        <FormField
+          control={form.control}
+          name="termsAccepted"
+          render={({ field }) => (
+            <FormItem className="flex items-start space-x-3 space-y-0">
+              <FormControl>
+                <input
+                  type="checkbox"
+                  checked={field.value}
+                  onChange={field.onChange}
+                  className="mt-1 w-5 h-5 accent-purple-500"
+                />
+              </FormControl>
+              <div className="space-y-1 leading-none">
+                <FormLabel className="text-white">
+                  I agree to the terms and conditions
+                </FormLabel>
+                <FormMessage />
+              </div>
+            </FormItem>
+          )}
+        />
+
+
+
+      <Button
+        type="submit"
+        disabled={isSubmitting || !recaptchaLoaded || !form.watch("termsAccepted")}
+        className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold py-3 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105"
+      >
+        {isSubmitting ? "Submitting..." : "Submit Registration"}
+      </Button>
+
       </form>
     </Form>
   );

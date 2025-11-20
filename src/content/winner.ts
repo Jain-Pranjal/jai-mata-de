@@ -1,5 +1,5 @@
 // src/content/winners.ts
-import { Language, WinnerContent } from "@/types/content";
+import { Language, WinnerContent } from "@/types/content"
 
 export const winnersContent: Record<Language, WinnerContent> = {
   hindi: {
@@ -9,19 +9,22 @@ export const winnersContent: Record<Language, WinnerContent> = {
       {
         position: "प्रथम स्थान",
         name: "विजेता का नाम",
-        videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        videoUrl:
+          "https://www.youtube.com/embed/FEMR5alT7CY?si=0AxkSlLmq_6Es9b7",
         trophy: "🏆",
       },
       {
         position: "द्वितीय स्थान",
         name: "उपविजेता",
-        videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        videoUrl:
+          "https://www.youtube.com/embed/FEMR5alT7CY?si=0AxkSlLmq_6Es9b7",
         trophy: "🥈",
       },
       {
         position: "तृतीय स्थान",
         name: "दूसरा उपविजेता",
-        videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        videoUrl:
+          "https://www.youtube.com/embed/FEMR5alT7CY?si=0AxkSlLmq_6Es9b7",
         trophy: "🥉",
       },
     ],
@@ -33,19 +36,22 @@ export const winnersContent: Record<Language, WinnerContent> = {
       {
         position: "1st Place",
         name: "Winner Name",
-        videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        videoUrl:
+          "https://www.youtube.com/embed/FEMR5alT7CY?si=0AxkSlLmq_6Es9b7",
         trophy: "🏆",
       },
       {
         position: "2nd Place",
         name: "Runner Up",
-        videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        videoUrl:
+          "https://www.youtube.com/embed/FEMR5alT7CY?si=0AxkSlLmq_6Es9b7",
         trophy: "🥈",
       },
       {
         position: "3rd Place",
         name: "Second Runner Up",
-        videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        videoUrl:
+          "https://www.youtube.com/embed/FEMR5alT7CY?si=0AxkSlLmq_6Es9b7",
         trophy: "🥉",
       },
     ],
@@ -57,19 +63,22 @@ export const winnersContent: Record<Language, WinnerContent> = {
       {
         position: "முதல் இடம்",
         name: "வெற்றியாளர் பெயர்",
-        videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        videoUrl:
+          "https://www.youtube.com/embed/FEMR5alT7CY?si=0AxkSlLmq_6Es9b7",
         trophy: "🏆",
       },
       {
         position: "இரண்டாவது இடம்",
         name: "இரண்டாம் இடம் பெற்றவர்",
-        videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        videoUrl:
+          "https://www.youtube.com/embed/FEMR5alT7CY?si=0AxkSlLmq_6Es9b7",
         trophy: "🥈",
       },
       {
         position: "மூன்றாவது இடம்",
         name: "இரண்டாவது இரண்டாம் இடம் பெற்றவர்",
-        videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        videoUrl:
+          "https://www.youtube.com/embed/FEMR5alT7CY?si=0AxkSlLmq_6Es9b7",
         trophy: "🥉",
       },
     ],
@@ -81,19 +90,22 @@ export const winnersContent: Record<Language, WinnerContent> = {
       {
         position: "మొదటి స్థానం",
         name: "విజేత పేరు",
-        videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        videoUrl:
+          "https://www.youtube.com/embed/FEMR5alT7CY?si=0AxkSlLmq_6Es9b7",
         trophy: "🏆",
       },
       {
         position: "రెండవ స్థానం",
         name: "రన్నర్ అప్",
-        videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        videoUrl:
+          "https://www.youtube.com/embed/FEMR5alT7CY?si=0AxkSlLmq_6Es9b7",
         trophy: "🥈",
       },
       {
         position: "మూడవ స్థానం",
         name: "రెండవ రన్నర్ అప్",
-        videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        videoUrl:
+          "https://www.youtube.com/embed/FEMR5alT7CY?si=0AxkSlLmq_6Es9b7",
         trophy: "🥉",
       },
     ],
@@ -106,21 +118,24 @@ export const winnersContent: Record<Language, WinnerContent> = {
       {
         position: "ಮೊದಲ ಸ್ಥಾನ",
         name: "ವಿಜೇತ ಹೆಸರು",
-        videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        videoUrl:
+          "https://www.youtube.com/embed/FEMR5alT7CY?si=0AxkSlLmq_6Es9b7",
         trophy: "🏆",
       },
       {
         position: "ಎರಡನೇ ಸ್ಥಾನ",
         name: "ರನ್ನರ್ ಅಪ್",
-        videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        videoUrl:
+          "https://www.youtube.com/embed/FEMR5alT7CY?si=0AxkSlLmq_6Es9b7",
         trophy: "🥈",
       },
       {
         position: "ಮೂರನೇ ಸ್ಥಾನ",
         name: "ಎರಡನೇ ರನ್ನರ್ ಅಪ್",
-        videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        videoUrl:
+          "https://www.youtube.com/embed/FEMR5alT7CY?si=0AxkSlLmq_6Es9b7",
         trophy: "🥉",
       },
     ],
   },
-};
+}
